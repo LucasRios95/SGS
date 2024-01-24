@@ -15,4 +15,4 @@ class DeleteBankAccountController {
     }
 }
 
-export { DeleteBankAccountController }
+export { DeleteBankAccountController };
