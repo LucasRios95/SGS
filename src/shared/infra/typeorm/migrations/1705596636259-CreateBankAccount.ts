@@ -1,4 +1,5 @@
 import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
+import { RelationIdAttribute } from "typeorm/query-builder/relation-id/RelationIdAttribute";
 
 export class CreateBankAccount1705596636259 implements MigrationInterface {
 
@@ -25,7 +26,8 @@ export class CreateBankAccount1705596636259 implements MigrationInterface {
 
                     {
                         name: "our_number",
-                        type: "varchar"
+                        type: "varchar",
+                        isNullable: true
                     },
 
                     {

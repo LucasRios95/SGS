@@ -5,7 +5,7 @@ interface ICreateBankAccountDto {
     message: string;
     id_bank: string;
     id_company: string;
-    created_at: Date;
+    created_at: string;
 }
 
 export { ICreateBankAccountDto };

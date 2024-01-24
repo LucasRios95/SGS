@@ -48,10 +48,9 @@ class BankAccountsRepository implements IBankAccountsRepository{
         return accountsList;
     }
 
-    async delete(id: string): Promise<void> {
-        const bankAccount = await this.repository.findOne({id});
+    async delete(account_number: string): Promise<void> {
 
-        this.repository.delete(bankAccount.id);
+        this.repository.delete(account_number);
 
     }
 }

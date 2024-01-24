@@ -5,27 +5,27 @@
 
 # CADASTRO DE EMPRESA/ASSOCIAÇÃO
 **RF**
-- Deve ser possível cadastrar uma nova empresa;
-- Deve ser possível selecionar a empresa a ser gerenciada;
+- Deve ser possível cadastrar uma nova empresa; ok
+- Deve ser possível selecionar a empresa a ser gerenciada; ok
 
 **RN**
-- Não deve ser possível cadastrar uma nova empresa cujo cnpj já exista;
-- Cada empresa tem um perfil único dentro do sistema;
+- Não deve ser possível cadastrar uma nova empresa cujo cnpj já exista; ok
+- Cada empresa tem um perfil único dentro do sistema; ok
 - Apenas usuários com perfil de administrador podem cadastrar uma empresa
 
 # CADASTRO DE BANCO
 **RF**
-- Deve ser possível cadastrar um novo banco;
+- Deve ser possível cadastrar um novo banco; ok
 
 **RN**
-- Não deve ser possível realizar o cadastro de um novo banco com um nº de conta que já existe na base de dados;
+- Não deve ser possível realizar o cadastro de um novo banco com um nº de conta que já existe na base de dados; ok
 
 # CADASTRO DE CONTA BANCÁRIA
 **RF**
-- Deve ser posível cadastrar uma nova conta bancária 
-- Deve ser possível associar a conta bancária a um banco
-- Deve ser possível associar uma conta bancária a uma empresa/associação
-- Deve ser possível listar contas bancárias
+- Deve ser posível cadastrar uma nova conta bancária;  ok
+- Deve ser possível associar a conta bancária a um banco; ok
+- Deve ser possível associar uma conta bancária a uma empresa/associação; ok
+- Deve ser possível listar contas bancárias; ok
 
 **RN**
 - Não deve ser possível adicionar mais de uma conta bancária que tenha o mesmo nº de conta

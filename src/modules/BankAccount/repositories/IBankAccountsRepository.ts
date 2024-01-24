@@ -6,7 +6,7 @@ interface IBankAccountsRepository {
     create(data: ICreateBankAccountDto): Promise<BankAccount>;
     findByAccountNumber(account_number: string): Promise<BankAccount>;
     list(): Promise<BankAccount[]>;
-    delete(id: string): Promise<void>;
+    delete(account_number: string): Promise<void>;
 }
 
 export { IBankAccountsRepository };

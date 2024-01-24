@@ -15,9 +15,9 @@ class CreateBankAccountController {
             created_at
         } = request.body;
 
-        const createBankAccoountController = container.resolve(CreateBankAccountUseCase);
+        const createBankAccountUseCase = container.resolve(CreateBankAccountUseCase);
         
-        const bankAccount = createBankAccoountController.execute({
+        const bankAccount = await createBankAccountUseCase.execute({
             account_number,
             digit,
             our_number,
@@ -30,3 +30,5 @@ class CreateBankAccountController {
         return response.status(201).json(bankAccount);
     }
 }
+
+export { CreateBankAccountController };
