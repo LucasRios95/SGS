@@ -11,7 +11,7 @@ class DeleteBankAccountController {
 
         await deleteBankAccountUsecase.execute(account_number);
 
-        return response.status(200);
+        return response.status(200).json({ message: `account ${account_number} sucessfull deleted`});
 
     }
 }

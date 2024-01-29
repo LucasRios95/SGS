@@ -11,7 +11,7 @@ const deleteBankAccountController = new DeleteBankAccountController();
 
 bankAccountRoutes.post("/", createBankAccountController.handle);
 bankAccountRoutes.get("/", listBankAccountController.handle);
-bankAccountRoutes.delete("/:account_number", deleteBankAccountController.handle);
+bankAccountRoutes.delete("/delete/:account_number", deleteBankAccountController.handle);
 
 
 export { bankAccountRoutes };

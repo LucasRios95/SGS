@@ -5,8 +5,9 @@ import { BankAccount } from "../infra/typeorm/entities/BankAccount";
 interface IBankAccountsRepository {
     create(data: ICreateBankAccountDto): Promise<BankAccount>;
     findByAccountNumber(account_number: string): Promise<BankAccount>;
+    findById(id: string): Promise<BankAccount>;
     list(): Promise<BankAccount[]>;
-    delete(account_number: string): Promise<void>;
+    deleteBankAccount(account_number: string): Promise<Boolean>;
 }
 
 export { IBankAccountsRepository };

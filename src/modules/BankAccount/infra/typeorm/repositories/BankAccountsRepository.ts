@@ -1,7 +1,7 @@
 import { ICreateBankAccountDto } from "modules/BankAccount/dtos/ICreateBankAccountDTO";
 import { IBankAccountsRepository } from "modules/BankAccount/repositories/IBankAccountsRepository";
 import { BankAccount } from "../entities/BankAccount";
-import { Repository, getRepository } from "typeorm";
+import { DeleteResult, Repository, getRepository } from "typeorm";
 
 
 class BankAccountsRepository implements IBankAccountsRepository{
@@ -10,7 +10,7 @@ class BankAccountsRepository implements IBankAccountsRepository{
     constructor() {
         this.repository = getRepository(BankAccount);
     }
-
+    
     async create({
      account_number,
      digit,
@@ -42,16 +42,26 @@ class BankAccountsRepository implements IBankAccountsRepository{
 
     }
 
+    async findById(id: string): Promise<BankAccount> {
+        const bankAccount = await this.repository.findOne(id);
+
+        return bankAccount;
+    }
+
     async list(): Promise<BankAccount[]> {
         const accountsList = await this.repository.find();
 
         return accountsList;
     }
 
-    async delete(account_number: string): Promise<void> {
+    async deleteBankAccount(account_number: string): Promise<Boolean> {
+        const isDeleted = await this.repository.delete({account_number});
 
-        this.repository.delete(account_number);
+        if(!isDeleted) {
+            return false
+        }
 
+        return true;
     }
 }
 
