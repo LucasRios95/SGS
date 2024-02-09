@@ -19,12 +19,6 @@ export class CreateAffiliate1706552867938 implements MigrationInterface {
                     },
 
                     {
-                        name: "affiliate_type",
-                        type: "enum",
-                        default: "cpf"
-                    },
-
-                    {
                         name: "cnpj_cpf",
                         type: "varchar"
                     },
