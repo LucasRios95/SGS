@@ -46,6 +46,9 @@ export class Affiliate {
     @CreateDateColumn()
     created_at: Date;
 
+    @Column()
+    type: string;
+
     constructor() {
         if(!this.id) {
             this.id = uuidV4();

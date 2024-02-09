@@ -39,9 +39,9 @@
 
 **RN**
 - Cada filiado pode estar associado a uma ou mais empresa/associação;
-- O filiado pode ser pessoa física ou jurídica;
+- O filiado pode ser pessoa física ou jurídica; ok
 - Não deve ser possível cadastrar novos filiados com cnpj/cpf que já existam dentro do sistema;
-- O filiado deve ter um status de ativo/inativo dentro do sistema;
+- O filiado deve ter um status de ativo/inativo dentro do sistema; ok
 
 # CADASTRO DE DEPENDENTE
 **RF**

@@ -1,13 +1,18 @@
+import { Company } from "modules/Companies/infra/typeorm/entities/Company";
+
 interface ICreateAffiliateDto {
+    id?: string;
     name: string;
     affiliateType: string;
-    cnpjCpf: string;
+    cnpj_cpf: string;
     crc: string;
     address: string;
     city: string;
     uf: string;
     cep: string;
     active: boolean;
+    type: string;
+    companies: Company[]; 
     created_at: string;
 }
 
