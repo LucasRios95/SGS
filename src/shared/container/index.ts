@@ -6,6 +6,8 @@ import { BanksRepository } from "modules/Banks/infra/typeorm/repositories/BanksR
 import { IBanksRepository } from "modules/Banks/repositories/IBanksRepository";
 import { IBankAccountsRepository } from "modules/BankAccount/repositories/IBankAccountsRepository";
 import { BankAccountsRepository } from "modules/BankAccount/infra/typeorm/repositories/BankAccountsRepository";
+import { IAffiliatesRepository } from "modules/Affiliate/repositories/IAffiliatesRepository";
+import { AffiliatesRepository } from "modules/Affiliate/infra/typeorm/repositories/AffiliatesRepository";
 
 
 
@@ -25,4 +27,10 @@ container.registerSingleton<IBanksRepository>(
 container.registerSingleton<IBankAccountsRepository>(
     "BankAccountsRepository",
     BankAccountsRepository
+);
+
+//IAffiliateRepository
+container.registerSingleton<IAffiliatesRepository>(
+    "AffiliatesRepository",
+    AffiliatesRepository
 );

@@ -21,8 +21,6 @@ class AffiliatesRepository implements IAffiliatesRepository {
         uf,
         cep,
         active,
-        type,
-        companies,
         created_at,
     }: ICreateAffiliateDto): Promise<Affiliate> {
         const affiliate = await this.repository.create({
@@ -35,8 +33,6 @@ class AffiliatesRepository implements IAffiliatesRepository {
             uf,
             cep,
             active,
-            type,
-            companies,
             created_at,
         });
 
@@ -68,8 +64,6 @@ class AffiliatesRepository implements IAffiliatesRepository {
             uf,
             cep,
             active,
-            type,
-            companies,
             created_at,
         }: ICreateAffiliateDto
     ): Promise<void> {
@@ -85,8 +79,6 @@ class AffiliatesRepository implements IAffiliatesRepository {
                 uf,
                 cep,
                 active,
-                type,
-                companies,
                 created_at,
             }
         );
