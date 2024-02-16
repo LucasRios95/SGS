@@ -37,7 +37,7 @@ class CreateAffiliateUseCase {
         created_at
     }: IRequest): Promise<Affiliate> {
 
-        const affiliateAlreadyExists = this.affiliatesRepository.findByCnpjCpf(cnpj_cpf);
+        const affiliateAlreadyExists = await this.affiliatesRepository.findByCnpjCpf(cnpj_cpf);
 
         if(affiliateAlreadyExists) {
             throw new Error("Affiliate already exists!");
