@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { IAffiliatesRepository } from "../repositories/IAffiliatesRepository";
-import { Affiliate } from "../infra/typeorm/entities/Affiliate";
+import { IAffiliatesRepository } from "../../repositories/IAffiliatesRepository";
+import { Affiliate } from "../../infra/typeorm/entities/Affiliate";
 
 
 

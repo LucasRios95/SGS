@@ -37,7 +37,6 @@ export class Company {
         joinColumns: [{ name: "id_company" }],
         inverseJoinColumns: [{ name: "id_affiliate" }],
     })
-
     affiliates: Affiliate[];
 
     @CreateDateColumn()
