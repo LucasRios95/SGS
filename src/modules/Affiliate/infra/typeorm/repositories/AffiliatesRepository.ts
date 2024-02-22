@@ -10,6 +10,7 @@ class AffiliatesRepository implements IAffiliatesRepository {
     constructor() {
         this.repository = getRepository(Affiliate);
     }
+    
 
     async create({
         name,
@@ -92,6 +93,12 @@ class AffiliatesRepository implements IAffiliatesRepository {
         }
 
         return true;
+    }
+
+    async findByIds(ids: string): Promise<Affiliate[]> {
+        const allAffiliates = await this.findByIds(ids);
+        
+        return allAffiliates;
     }
 }
 

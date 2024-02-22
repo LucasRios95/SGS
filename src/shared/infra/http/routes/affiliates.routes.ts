@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { CreateAffiliateController } from "modules/Affiliate/useCases/CreateAffiliate/CreateAffiliateController";
+import { CreateAffiliateController } from "modules/Affiliate/useCases/createAffiliate/CreateAffiliateController";
 
 
 const affiliateRoutes = Router();

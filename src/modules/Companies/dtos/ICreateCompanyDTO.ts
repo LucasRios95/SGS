@@ -1,3 +1,5 @@
+import { Affiliate } from "modules/Affiliate/infra/typeorm/entities/Affiliate";
+
 interface ICreateCompanyDto {
     name: string;
     cnpj: string;
@@ -7,7 +9,8 @@ interface ICreateCompanyDto {
     city: string;
     uf: string;
     cep: string;
-    created_at: string;
+    affiliates?: Affiliate[];
+    created_at: Date;
 }
 
 export { ICreateCompanyDto };

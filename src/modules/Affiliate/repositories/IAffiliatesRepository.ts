@@ -7,6 +7,7 @@ interface IAffiliatesRepository {
     findByCnpjCpf(cnpj_cpf: string): Promise<Affiliate>;
     update(id: string, data: ICreateAffiliateDto ): Promise<void>;
     delete(id: string): Promise<boolean>;
+    findByIds(ids: string): Promise<Affiliate[]>;
 }
 
 export { IAffiliatesRepository };

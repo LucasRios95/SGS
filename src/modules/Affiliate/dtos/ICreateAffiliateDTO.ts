@@ -11,6 +11,7 @@ interface ICreateAffiliateDto {
     uf: string;
     cep: string;
     active: boolean;
+    companies: Company[];
     created_at: string;
 }
 

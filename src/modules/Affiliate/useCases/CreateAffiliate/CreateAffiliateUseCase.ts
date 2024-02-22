@@ -2,8 +2,6 @@ import { inject, injectable } from "tsyringe";
 import { IAffiliatesRepository } from "../../repositories/IAffiliatesRepository";
 import { Affiliate } from "../../infra/typeorm/entities/Affiliate";
 
-
-
 interface IRequest {
     name: string;
     affiliateType: string;
