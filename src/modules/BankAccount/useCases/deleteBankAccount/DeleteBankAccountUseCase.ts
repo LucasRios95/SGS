@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 
 import { IBankAccountsRepository } from "modules/BankAccount/repositories/IBankAccountsRepository";
 import { DeleteResult } from "typeorm";
+import { AppError } from "shared/errors/AppError";
 
 @injectable()
 class DeleteBankAccountUseCase {
@@ -14,7 +15,7 @@ class DeleteBankAccountUseCase {
         const bankAccount = await this.bankAccountsRepository.findByAccountNumber(account_number);
 
         if(!bankAccount) {
-            throw new Error("Account does not exists");
+            throw new AppError("Account does not exists");
         }
 
         const isDeleted = await this.bankAccountsRepository.deleteBankAccount(account_number);

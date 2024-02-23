@@ -3,6 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { Bank } from "modules/Banks/infra/typeorm/entities/Bank";
 import { IBanksRepository } from "modules/Banks/repositories/IBanksRepository";
 import { BanksRepository } from "modules/Banks/infra/typeorm/repositories/BanksRepository";
+import { AppError } from "shared/errors/AppError";
 
 interface IRequest {
     name: string;
@@ -29,7 +30,7 @@ class CreateBankUseCase {
         const bankAlreadyExists= await this.bankRepository.findByAgency(agency);
 
         if (bankAlreadyExists) {
-            throw new Error("Bank already exists with this agency number");
+            throw new AppError("Bank already exists");
         }
 
         const bank = await this.bankRepository.create({

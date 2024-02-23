@@ -1,5 +1,6 @@
 import { BankAccount } from "modules/BankAccount/infra/typeorm/entities/BankAccount";
 import { IBankAccountsRepository } from "modules/BankAccount/repositories/IBankAccountsRepository";
+import { AppError } from "shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 
 interface IRequest {
@@ -31,7 +32,7 @@ class CreateBankAccountUseCase {
         const accountAlreadyExists = await this.bankAccountsRepository.findByAccountNumber(account_number);
 
         if (accountAlreadyExists) {
-            throw new Error("Account Already exists");
+            throw new AppError("Bank account already exists with this account number");
         }
 
         const bankAccount = await this.bankAccountsRepository.create({

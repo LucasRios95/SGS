@@ -3,6 +3,7 @@ import { inject, injectable } from "tsyringe";
 import { Company } from "modules/Companies/infra/typeorm/entities/Company";
 import { CompaniesRepository } from "../../infra/typeorm/repositories/CompaniesRepository";
 import { ICompaniesRepository } from "modules/Companies/repositories/ICompaniesRepository";
+import { AppError } from "shared/errors/AppError";
 
 
 interface IRequest {
@@ -14,7 +15,7 @@ interface IRequest {
     city: string;
     uf: string;
     cep: string;
-    created_at: string;
+    created_at: Date;
 }
 
 @injectable()
@@ -38,7 +39,7 @@ class CreateCompanyUseCase {
         const companyAlreadyExists = await this.companiesRepository.findByCnpj(cnpj);
 
         if (companyAlreadyExists) {
-            throw new Error("Empresa já existe na base de dados");
+            throw new AppError("Company already exists");
             
         }
 

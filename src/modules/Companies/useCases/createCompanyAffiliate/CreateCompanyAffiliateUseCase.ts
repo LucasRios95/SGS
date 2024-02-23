@@ -33,7 +33,7 @@ class CreateAffiliateCompanyUseCase {
         await this.companiesRepository.create(companyExists);
 
         return companyExists;
-        
+              
     }
 }
 
