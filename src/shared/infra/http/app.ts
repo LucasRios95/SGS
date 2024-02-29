@@ -30,7 +30,7 @@ app.use(
             message: `internal server error - ${err.message}`
         });
 
-        next();
+        next()
     }
 );
 

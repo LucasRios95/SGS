@@ -9,7 +9,7 @@ interface IRequest {
 }
 
 @injectable()
-class CreateAffiliateCompanyUseCase {
+class CreateCompanyAffiliateUseCase {
     constructor(
         @inject("CompaniesRepository")
         private companiesRepository: ICompaniesRepository,
@@ -37,4 +37,4 @@ class CreateAffiliateCompanyUseCase {
     }
 }
 
-export { CreateAffiliateCompanyUseCase };
+export { CreateCompanyAffiliateUseCase };
