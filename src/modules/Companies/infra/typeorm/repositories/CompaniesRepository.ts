@@ -20,7 +20,8 @@ class CompaniesRepository implements ICompaniesRepository {
         city,
         uf,
         cep,
-        created_at
+        created_at,
+        id,
     }: ICreateCompanyDto): Promise<Company> {
         const company = this.repository.create({
             name,
@@ -32,6 +33,7 @@ class CompaniesRepository implements ICompaniesRepository {
             uf,
             cep,
             created_at,
+            id
         });
 
         await this.repository.save(company);

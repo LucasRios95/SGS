@@ -4,7 +4,7 @@ import { ICompaniesRepository } from "modules/Companies/repositories/ICompaniesR
 import { inject, injectable } from "tsyringe";
 
 interface IRequest {
-    id_affiliate: string;
+    id_affiliate: string[];
     id_company: string;
 }
 

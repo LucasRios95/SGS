@@ -11,6 +11,7 @@ interface ICreateCompanyDto {
     cep: string;
     affiliates?: Affiliate[];
     created_at: Date;
+    id?: string;
 }
 
 export { ICreateCompanyDto };

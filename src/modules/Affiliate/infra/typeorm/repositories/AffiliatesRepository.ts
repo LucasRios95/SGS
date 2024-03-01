@@ -3,7 +3,6 @@ import { IAffiliatesRepository } from "modules/Affiliate/repositories/IAffiliate
 import { Affiliate } from "../entities/Affiliate";
 import { Repository, getRepository } from "typeorm";
 
-
 class AffiliatesRepository implements IAffiliatesRepository {
     private repository: Repository<Affiliate>;
 
@@ -11,7 +10,6 @@ class AffiliatesRepository implements IAffiliatesRepository {
         this.repository = getRepository(Affiliate);
     }
     
-
     async create({
         name,
         affiliateType,
@@ -23,6 +21,7 @@ class AffiliatesRepository implements IAffiliatesRepository {
         cep,
         active,
         created_at,
+        id,
     }: ICreateAffiliateDto): Promise<Affiliate> {
         const affiliate = await this.repository.create({
             name,
@@ -35,6 +34,7 @@ class AffiliatesRepository implements IAffiliatesRepository {
             cep,
             active,
             created_at,
+            id,
         });
 
         return affiliate;
@@ -95,8 +95,8 @@ class AffiliatesRepository implements IAffiliatesRepository {
         return true;
     }
 
-    async findByIds(ids: string): Promise<Affiliate[]> {
-        const allAffiliates = await this.findByIds(ids);
+    async findByIds(ids: string[]): Promise<Affiliate[]> {
+        const allAffiliates = await this.repository.findByIds(ids);
         
         return allAffiliates;
     }
