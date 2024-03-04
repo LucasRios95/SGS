@@ -6,6 +6,7 @@ interface ICompaniesRepository {
     list(): Promise<Company[]>;
     findByCnpj(cnpj: string): Promise<Company>;
     findById(id: string): Promise<Company>;
+    findByIds(ids: string[]): Promise<Company[]>;
 }
 
 export { ICompaniesRepository };

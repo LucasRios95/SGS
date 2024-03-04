@@ -5,13 +5,13 @@ import { CreateCompanyAffiliateUseCase } from "./CreateCompanyAffiliateUseCase";
 
 class CreateCompanyAffiliateController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { id_company } = request.params;
+        const { id } = request.params;
         const { id_affiliate } = request.body;
 
         const createCompanyAffiliate = container.resolve(CreateCompanyAffiliateUseCase);
 
-        const companyAffiliate = createCompanyAffiliate.execute({ 
-            id_company,
+        const companyAffiliate = await createCompanyAffiliate.execute({ 
+            id_company: id,
             id_affiliate,
         });
 

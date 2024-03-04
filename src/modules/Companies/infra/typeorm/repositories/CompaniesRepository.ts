@@ -12,6 +12,7 @@ class CompaniesRepository implements ICompaniesRepository {
         this.repository = getRepository(Company);
     }
     async create({
+        id,
         name,
         cnpj,
         email,
@@ -20,10 +21,11 @@ class CompaniesRepository implements ICompaniesRepository {
         city,
         uf,
         cep,
-        created_at,
-        id,
+        affiliates,
+        created_at,   
     }: ICreateCompanyDto): Promise<Company> {
         const company = this.repository.create({
+            id,
             name,
             cnpj,
             email,
@@ -32,8 +34,8 @@ class CompaniesRepository implements ICompaniesRepository {
             city,
             uf,
             cep,
-            created_at,
-            id
+            affiliates,
+            created_at,  
         });
 
         await this.repository.save(company);
@@ -58,6 +60,12 @@ class CompaniesRepository implements ICompaniesRepository {
         const company = await this.repository.findOne(id);
 
         return company;
+    }
+
+    async findByIds(ids: string[]): Promise<Company[]> {
+        const companies = await this.repository.findByIds(ids);
+
+        return companies;
     }
 
 }

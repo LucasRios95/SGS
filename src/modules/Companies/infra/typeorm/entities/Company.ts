@@ -33,7 +33,7 @@ export class Company {
 
     @ManyToMany(() => Affiliate)
     @JoinTable({
-        name: "affiliate_company",
+        name: "company_affiliate",
         joinColumns: [{ name: "id_company" }],
         inverseJoinColumns: [{ name: "id_affiliate" }],
     })

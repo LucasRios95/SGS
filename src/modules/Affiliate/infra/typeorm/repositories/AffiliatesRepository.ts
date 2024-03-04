@@ -21,9 +21,9 @@ class AffiliatesRepository implements IAffiliatesRepository {
         cep,
         active,
         created_at,
-        id,
+        
     }: ICreateAffiliateDto): Promise<Affiliate> {
-        const affiliate = await this.repository.create({
+        const affiliate = this.repository.create({
             name,
             affiliateType,
             cnpj_cpf,
@@ -34,8 +34,9 @@ class AffiliatesRepository implements IAffiliatesRepository {
             cep,
             active,
             created_at,
-            id,
         });
+
+        await this.repository.save(affiliate);
 
         return affiliate;
     }

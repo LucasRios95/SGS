@@ -36,13 +36,13 @@ export class Affiliate {
     active: boolean;
 
     
-    @ManyToMany(() => Company)
-    @JoinTable({
-        name: "affiliate_company",
-        joinColumns: [{ name: "id_affiliate" }],
-        inverseJoinColumns: [{ name: "id_company" }],
-    })
-    companies: Company[];
+    // @ManyToMany(() => Company)
+    // @JoinTable({
+    //     name: "affiliate_company",
+    //     joinColumns: [{ name: "id_affiliate" }],
+    //     inverseJoinColumns: [{ name: "id_company" }],
+    // })
+    // companies: Company[];
 
     @CreateDateColumn()
     created_at: Date;

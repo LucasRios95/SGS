@@ -12,6 +12,6 @@ const companyAffiliateController = new CreateCompanyAffiliateController();
 
 companyRoutes.post("/", createCompanyController.handle);
 companyRoutes.get("/", listCompaniesController.handle);
-companyRoutes.post("/affiliates/:id_affiliate", companyAffiliateController.handle);
+companyRoutes.post("/affiliates/:id", companyAffiliateController.handle);
 
 export { companyRoutes };
