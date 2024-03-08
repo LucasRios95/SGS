@@ -28,24 +28,24 @@
 - Deve ser possível listar contas bancárias; ok
 
 **RN**
-- Não deve ser possível adicionar mais de uma conta bancária que tenha o mesmo nº de conta
-- Deve ser possível cadastrar mais de uma conta bancária para cada empresa/associação
-- Cada conta bancária pertence somente a um único banco e a uma única empresa
+- Não deve ser possível adicionar mais de uma conta bancária que tenha o mesmo nº de conta; ok
+- Deve ser possível cadastrar mais de uma conta bancária para cada empresa/associação; ok
+- Cada conta bancária pertence somente a um único banco e a uma única empresa; ok
 
 # CADASTRO DE FILIADO
 **RF**
-- Deve ser possível cadastrar um novo filiado;
+- Deve ser possível cadastrar um novo filiado;  
 - Deve ser possível alterar o cadastro de um filiado;
 
 **RN**
-- Cada filiado pode estar associado a uma ou mais empresa/associação;
+- Cada filiado pode estar associado a uma ou mais empresa/associação; ok
 - O filiado pode ser pessoa física ou jurídica; ok
-- Não deve ser possível cadastrar novos filiados com cnpj/cpf que já existam dentro do sistema;
+- Não deve ser possível cadastrar novos filiados com cnpj/cpf que já existam dentro do sistema; ok
 - O filiado deve ter um status de ativo/inativo dentro do sistema; ok
 
 # CADASTRO DE DEPENDENTE
 **RF**
-- Deve ser possível cadastrar um novo dependente;
+- Deve ser possível cadastrar um novo dependente; 
 - Deve ser possível alterar o cadastro de dependente;
 - Deve ser possível excluir o dependente;
 
