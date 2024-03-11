@@ -2,9 +2,7 @@ import { IDependentsRepository } from "modules/Affiliate/repositories/IDependent
 import { Repository, getRepository } from "typeorm";
 import { Dependent } from "../entities/Dependent";
 import { ICreateDependentDto } from "modules/Affiliate/dtos/ICreateDependtDTO";
-
-
-
+import { IEditDependentDto } from "modules/Affiliate/dtos/IEditDependentDTO";
 class DependentRepository implements IDependentsRepository {
     private repository: Repository<Dependent>
 
@@ -52,16 +50,25 @@ class DependentRepository implements IDependentsRepository {
 
         return dependents; 
     }
-    findById(id: string): Promise<Dependent> {
-        throw new Error("Method not implemented.");
-    }
-    update(id: string, data?: ICreateDependentDto): Promise<Dependent> {
-        throw new Error("Method not implemented.");
-    }
-    delete(id: string): Promise<boolean> {
-        throw new Error("Method not implemented.");
+    async findById(id: string): Promise<Dependent> {
+        const dependent = await this.repository.findOne({id});
+
+        return dependent;
     }
 
+    update(id: string, data: IEditDependentDto): Promise<Dependent> {
+        throw new Error("Method not implemented.");
+    }
+    
+    async delete(id: string): Promise<boolean> {
+        const isDeleted = await this.repository.delete(id);
+
+        if (!isDeleted) {
+            return false;
+        }
+
+        return true;
+    }
 
 }
 
