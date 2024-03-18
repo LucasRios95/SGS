@@ -34,14 +34,17 @@
 
 # CADASTRO DE FILIADO
 **RF**
-- Deve ser possível cadastrar um novo filiado;  
+- Deve ser possível cadastrar um novo filiado; ok
 - Deve ser possível alterar o cadastro de um filiado;
+- Deve ser possível deletar um filiado;
 
 **RN**
 - Cada filiado pode estar associado a uma ou mais empresa/associação; ok
 - O filiado pode ser pessoa física ou jurídica; ok
 - Não deve ser possível cadastrar novos filiados com cnpj/cpf que já existam dentro do sistema; ok
 - O filiado deve ter um status de ativo/inativo dentro do sistema; ok
+- Somente o usuário administrador deve conseguir alterar o cadastro de um filiado; 
+- Somente o usuário administrador deve conseguir remover um filiado;
 
 # CADASTRO DE DEPENDENTE
 **RF**
@@ -52,6 +55,7 @@
 **RN**
 - Cada dependente de estar associado a um filiado;
 - Não deve ser possível associar um dependente a mais de um filiado;
--
+- Somente o usuário administrador deve conseguir alterar o cadastro de um dependente; 
+- Somente o usuário administrador deve conseguir remover um dependente;
 
 

@@ -6,7 +6,7 @@ interface IDependentsRepository {
     create(data: ICreateDependentDto): Promise<Dependent>;
     list(): Promise<Dependent[]>;
     findById(id: string): Promise<Dependent>;
-    update(id: string, data: IEditDependentDto): Promise<Dependent>;
+    update(id: string, data: IEditDependentDto): Promise<void>;
     delete(id: string): Promise<boolean>; 
 }
 

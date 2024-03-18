@@ -2,14 +2,13 @@ import { ICreateAffiliateDto } from "modules/Affiliate/dtos/ICreateAffiliateDTO"
 import { IAffiliatesRepository } from "modules/Affiliate/repositories/IAffiliatesRepository";
 import { Affiliate } from "../entities/Affiliate";
 import { Repository, getRepository } from "typeorm";
-
 class AffiliatesRepository implements IAffiliatesRepository {
     private repository: Repository<Affiliate>;
 
     constructor() {
         this.repository = getRepository(Affiliate);
     }
-    
+
     async create({
         name,
         affiliateType,
@@ -21,7 +20,7 @@ class AffiliatesRepository implements IAffiliatesRepository {
         cep,
         active,
         created_at,
-        
+
     }: ICreateAffiliateDto): Promise<Affiliate> {
         const affiliate = this.repository.create({
             name,
@@ -52,6 +51,12 @@ class AffiliatesRepository implements IAffiliatesRepository {
         const affiliate = await this.repository.findOne({ cnpj_cpf });
 
         return affiliate;
+    }
+
+    async list(): Promise<Affiliate[]> {
+        const affiliates = await this.repository.find();
+
+        return affiliates
     }
 
     async update(
@@ -87,9 +92,9 @@ class AffiliatesRepository implements IAffiliatesRepository {
     }
 
     async delete(id: string): Promise<boolean> {
-        const isDeleted = await this.repository.delete({id});
+        const isDeleted = await this.repository.delete({ id });
 
-        if(!isDeleted) {
+        if (!isDeleted) {
             return false;
         }
 
@@ -98,7 +103,7 @@ class AffiliatesRepository implements IAffiliatesRepository {
 
     async findByIds(ids: string[]): Promise<Affiliate[]> {
         const allAffiliates = await this.repository.findByIds(ids);
-        
+
         return allAffiliates;
     }
 }

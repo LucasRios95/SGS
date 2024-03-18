@@ -48,18 +48,42 @@ class DependentRepository implements IDependentsRepository {
     async list(): Promise<Dependent[]> {
         const dependents = await this.repository.find();
 
-        return dependents; 
+        return dependents;
     }
+    
     async findById(id: string): Promise<Dependent> {
-        const dependent = await this.repository.findOne({id});
+        const dependent = await this.repository.findOne({ id });
 
         return dependent;
     }
 
-    update(id: string, data: IEditDependentDto): Promise<Dependent> {
-        throw new Error("Method not implemented.");
+    async update(id: string, {
+        name,
+        birth_date,
+        phone,
+        address,
+        city,
+        uf,
+        cep,
+        active,
+        gender,
+    }): Promise<void> {
+        const values = {
+            name,
+            birth_date,
+            phone,
+            address,
+            city,
+            uf,
+            cep,
+            active,
+            gender,
+        }
+
+        const dependent = await this.repository.update(id, values);
+
     }
-    
+
     async delete(id: string): Promise<boolean> {
         const isDeleted = await this.repository.delete(id);
 
