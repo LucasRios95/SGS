@@ -1,8 +1,7 @@
 import { IDependentsRepository } from "modules/Affiliate/repositories/IDependentsRepository";
 import { Repository, getRepository } from "typeorm";
 import { Dependent } from "../entities/Dependent";
-import { ICreateDependentDto } from "modules/Affiliate/dtos/ICreateDependtDTO";
-import { IEditDependentDto } from "modules/Affiliate/dtos/IEditDependentDTO";
+
 class DependentRepository implements IDependentsRepository {
     private repository: Repository<Dependent>
 
@@ -80,8 +79,7 @@ class DependentRepository implements IDependentsRepository {
             gender,
         }
 
-        const dependent = await this.repository.update(id, values);
-
+        await this.repository.update(id, values);
     }
 
     async delete(id: string): Promise<boolean> {

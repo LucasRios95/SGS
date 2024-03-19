@@ -8,7 +8,11 @@ class ListAffiliateUseCase {
         private affiliateRepository: IAffiliatesRepository
     ) {}
 
-    async execute() {    }
+    async execute() {  
+        const affiliates = await this.affiliateRepository.list();
+
+        return affiliates;
+      }
 } 
 
 export { ListAffiliateUseCase }
