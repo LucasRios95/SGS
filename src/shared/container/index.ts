@@ -8,7 +8,8 @@ import { IBankAccountsRepository } from "modules/BankAccount/repositories/IBankA
 import { BankAccountsRepository } from "modules/BankAccount/infra/typeorm/repositories/BankAccountsRepository";
 import { IAffiliatesRepository } from "modules/Affiliate/repositories/IAffiliatesRepository";
 import { AffiliatesRepository } from "modules/Affiliate/infra/typeorm/repositories/AffiliatesRepository";
-
+import { IDependentsRepository } from "modules/Affiliate/repositories/IDependentsRepository";
+import { DependentsRepository } from "modules/Affiliate/infra/typeorm/repositories/DependentsRepository";
 
 
 //ICompaniesRepository
@@ -29,8 +30,14 @@ container.registerSingleton<IBankAccountsRepository>(
     BankAccountsRepository
 );
 
-//IAffiliateRepository
+//IAffiliatesRepository
 container.registerSingleton<IAffiliatesRepository>(
     "AffiliatesRepository",
     AffiliatesRepository
+);
+
+//IDependentRepository
+container.registerSingleton<IDependentsRepository>(
+    "DependentsRepository",
+    DependentsRepository
 );

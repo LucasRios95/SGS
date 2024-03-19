@@ -2,7 +2,7 @@ import { IDependentsRepository } from "modules/Affiliate/repositories/IDependent
 import { Repository, getRepository } from "typeorm";
 import { Dependent } from "../entities/Dependent";
 
-class DependentRepository implements IDependentsRepository {
+class DependentsRepository implements IDependentsRepository {
     private repository: Repository<Dependent>
 
     constructor() {
@@ -94,4 +94,4 @@ class DependentRepository implements IDependentsRepository {
 
 }
 
-export { DependentRepository };
+export { DependentsRepository };

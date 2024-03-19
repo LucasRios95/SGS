@@ -4,7 +4,7 @@ import { inject, injectable } from "tsyringe";
 @injectable()
 class ListAffiliateUseCase {
     constructor(
-        @inject("AffiliateRepository")
+        @inject("AffiliatesRepository")
         private affiliateRepository: IAffiliatesRepository
     ) {}
 

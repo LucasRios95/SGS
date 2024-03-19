@@ -37,7 +37,7 @@
 - Deve ser possível cadastrar um novo filiado; ok
 - Deve ser possível alterar o cadastro de um filiado;
 - Deve ser possível deletar um filiado;
-- Deve ser possível listar os filiados pk
+- Deve ser possível listar os filiados; ok
 
 **RN**
 - Cada filiado pode estar associado a uma ou mais empresa/associação; ok
