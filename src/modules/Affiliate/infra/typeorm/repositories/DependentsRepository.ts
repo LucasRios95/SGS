@@ -49,7 +49,22 @@ class DependentsRepository implements IDependentsRepository {
 
         return dependents;
     }
-    
+
+    async listByAffiliate(id_affiliate: string): Promise<Dependent[]> {
+        const dependents = await this.repository.find({
+            select: [
+                "name",
+                "email",
+            ],
+            where: {
+                id_affiliate: id_affiliate,
+                active: true
+            }
+        });
+
+        return dependents;
+    }
+
     async findById(id: string): Promise<Dependent> {
         const dependent = await this.repository.findOne({ id });
 

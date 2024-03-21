@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { CreateDependentController } from "modules/Affiliate/useCases/CreateDependent/CreateDependentController";
+import { CreateDependentController } from "modules/Affiliate/useCases/createDependent/CreateDependentController";
 import { CreateAffiliateController } from "modules/Affiliate/useCases/createAffiliate/CreateAffiliateController";
 import { ListAffiliateController } from "modules/Affiliate/useCases/listAffiliate/ListAffiliateController";
 

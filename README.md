@@ -49,12 +49,13 @@
 
 # CADASTRO DE DEPENDENTE
 **RF**
-- Deve ser possível cadastrar um novo dependente; 
+- Deve ser possível cadastrar um novo dependente;  ok
 - Deve ser possível alterar o cadastro de dependente;
 - Deve ser possível excluir o dependente;
+- Deve ser possível listar dependentes por filiado;
 
 **RN**
-- Cada dependente de estar associado a um filiado;
+- Cada dependente de estar associado a um filiado; ok
 - Não deve ser possível associar um dependente a mais de um filiado;
 - Somente o usuário administrador deve conseguir alterar o cadastro de um dependente; 
 - Somente o usuário administrador deve conseguir remover um dependente;
