@@ -52,12 +52,12 @@
 - Deve ser possível cadastrar um novo dependente;  ok
 - Deve ser possível alterar o cadastro de dependente;
 - Deve ser possível excluir o dependente;
-- Deve ser possível listar dependentes por filiado;
+- Deve ser possível listar dependentes por filiado; ok
 
 **RN**
 - Cada dependente de estar associado a um filiado; ok
-- Não deve ser possível associar um dependente a mais de um filiado;
+- Não deve ser possível associar um dependente a mais de um filiado; ok
 - Somente o usuário administrador deve conseguir alterar o cadastro de um dependente; 
-- Somente o usuário administrador deve conseguir remover um dependente;
+- Somente o usuário administrador deve conseguir remover um dependente; 
 
 

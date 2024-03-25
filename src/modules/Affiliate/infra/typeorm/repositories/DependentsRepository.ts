@@ -55,12 +55,15 @@ class DependentsRepository implements IDependentsRepository {
             select: [
                 "name",
                 "email",
+                "active"
             ],
             where: {
                 id_affiliate: id_affiliate,
                 active: true
             }
         });
+
+        console.log(dependents);
 
         return dependents;
     }
