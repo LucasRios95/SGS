@@ -12,7 +12,7 @@ interface ICreateAffiliateDto {
     cep: string;
     active: boolean;
     companies?: Company[];
-    created_at: string;
+    created_at: Date;
 }
 
 export { ICreateAffiliateDto };

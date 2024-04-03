@@ -12,7 +12,7 @@ interface IRequest {
     uf: string;
     cep: string;
     active: boolean;
-    created_at: string;
+    created_at: Date;
 }
 
 @injectable()

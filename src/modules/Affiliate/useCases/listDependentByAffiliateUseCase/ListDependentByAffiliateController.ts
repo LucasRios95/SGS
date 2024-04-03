@@ -11,10 +11,8 @@ class ListDependentByAffiliateController {
 
         const dependentsList = await listDependentByAffilliateUseCase.execute(id);
 
-        console.log(dependentsList)
-
         return response.status(200).json(dependentsList);
     }
 }
 
-export { ListDependentByAffiliateController }
+export { ListDependentByAffiliateController };

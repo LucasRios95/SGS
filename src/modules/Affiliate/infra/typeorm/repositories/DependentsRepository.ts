@@ -62,9 +62,7 @@ class DependentsRepository implements IDependentsRepository {
                 active: true
             }
         });
-
-        console.log(dependents);
-
+        
         return dependents;
     }
 
@@ -74,9 +72,11 @@ class DependentsRepository implements IDependentsRepository {
         return dependent;
     }
 
-    async update(id: string, {
+    async edit(id_dependent: string, {
+        id,
         name,
         birth_date,
+        email,
         phone,
         address,
         city,
@@ -84,10 +84,14 @@ class DependentsRepository implements IDependentsRepository {
         cep,
         active,
         gender,
-    }): Promise<void> {
-        const values = {
+        id_affiliate,
+        created_at
+    }): Promise<Dependent> {
+        const editedAffiliate = await this.repository.save({
+            id,
             name,
             birth_date,
+            email,
             phone,
             address,
             city,
@@ -95,9 +99,11 @@ class DependentsRepository implements IDependentsRepository {
             cep,
             active,
             gender,
-        }
+            id_affiliate,
+            created_at
+        });
 
-        await this.repository.update(id, values);
+        return editedAffiliate;
     }
 
     async delete(id: string): Promise<boolean> {

@@ -7,7 +7,7 @@ interface IDependentsRepository {
     list(): Promise<Dependent[]>;
     listByAffiliate(id_affiliate: string): Promise<Dependent[]>;
     findById(id: string): Promise<Dependent>;
-    update(id: string, data: IEditDependentDto): Promise<void>;
+    edit(id_dependent: string, data: IEditDependentDto): Promise<Dependent>;
     delete(id: string): Promise<boolean>; 
 }
 

@@ -2,6 +2,7 @@ import { ICreateAffiliateDto } from "modules/Affiliate/dtos/ICreateAffiliateDTO"
 import { IAffiliatesRepository } from "modules/Affiliate/repositories/IAffiliatesRepository";
 import { Affiliate } from "../entities/Affiliate";
 import { Repository, getRepository } from "typeorm";
+import { AppError } from "shared/errors/AppError";
 class AffiliatesRepository implements IAffiliatesRepository {
     private repository: Repository<Affiliate>;
 
@@ -47,21 +48,21 @@ class AffiliatesRepository implements IAffiliatesRepository {
 
     }
 
-    async findByCnpjCpf(cnpj_cpf: string): Promise<Affiliate> {
-        const affiliate = await this.repository.findOne({ cnpj_cpf });
-
-        return affiliate;
-    }
-
-    async list(): Promise<Affiliate[]> {
-        const affiliates = await this.repository.find();
-
-        return affiliates
-    }
-
-    async update(
-        id: string,
-        {
+    async edit(id_affiliate: string, {
+        id,
+        name,
+        affiliateType,
+        cnpj_cpf,
+        crc,
+        address,
+        city,
+        uf,
+        cep,
+        active,
+        created_at,
+    }): Promise<Affiliate> {
+        const editedAffiliate = await this.repository.save({
+            id,
             name,
             affiliateType,
             cnpj_cpf,
@@ -72,23 +73,21 @@ class AffiliatesRepository implements IAffiliatesRepository {
             cep,
             active,
             created_at,
-        }: ICreateAffiliateDto
-    ): Promise<void> {
-        const affiliate = await this.repository.update(
-            id,
-            {
-                name,
-                affiliateType,
-                cnpj_cpf,
-                crc,
-                address,
-                city,
-                uf,
-                cep,
-                active,
-                created_at,
-            }
-        );
+        });
+
+        return editedAffiliate;
+    }
+
+    async findByCnpjCpf(cnpj_cpf: string): Promise<Affiliate> {
+        const affiliate = await this.repository.findOne({ cnpj_cpf });
+
+        return affiliate;
+    }
+
+    async list(): Promise<Affiliate[]> {
+        const affiliates = await this.repository.find();
+
+        return affiliates
     }
 
     async delete(id: string): Promise<boolean> {
