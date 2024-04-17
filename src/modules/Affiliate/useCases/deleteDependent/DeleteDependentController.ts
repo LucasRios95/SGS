@@ -5,7 +5,7 @@ import { DeleteDependentUseCase } from "./DeleteDependentUseCase";
 
 class DeleteDependentController {
     async handle(request: Request, response: Response): Promise<Response> {
-        const { id } = request.params
+        const { id } = request.params;
         
         const deleteDependentUsecase = container.resolve(DeleteDependentUseCase);
 

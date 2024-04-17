@@ -5,6 +5,8 @@ import { DeleteAffiliateUseCase } from "./DeleteAffiliateUseCase";
 class DeleteAffiliateController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params
+
+        console.log(id);
         
         const deleteAffiliateUsecase = container.resolve(DeleteAffiliateUseCase);
 

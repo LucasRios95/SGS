@@ -28,10 +28,10 @@ affiliateRoutes.post("/", createAffiliateController.handle);
 affiliateRoutes.get("/", listAffiliateController.handle);
 affiliateRoutes.put("/:id", editAffiliateController.handle);
 affiliateRoutes.delete("/:id", deleteAffiliateController.handle);
-affiliateRoutes.post("/dependent", createDependentController.handle);
+affiliateRoutes.post("/dependents", createDependentController.handle);
 affiliateRoutes.get("/dependents", listDependentController.handle);
 affiliateRoutes.get("/dependents/:id", listDependentByAffiliateController.handle);
 affiliateRoutes.put("/dependents/:id", editDependentController.handle);
-affiliateRoutes.delete("/depedents/:id", deleteDependentController.handle);
+affiliateRoutes.delete("/dependents/:id", deleteDependentController.handle);
 
 export { affiliateRoutes };
