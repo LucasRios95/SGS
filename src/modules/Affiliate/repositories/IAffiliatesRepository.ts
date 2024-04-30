@@ -1,6 +1,6 @@
 import { ICreateAffiliateDto } from "../dtos/ICreateAffiliateDTO";
 import { Affiliate } from "../infra/typeorm/entities/Affiliate";
-import { IEditAffiliateDto } from "../dtos/IEditAffiliateDto";
+import { IEditAffiliateDto } from "../dtos/IEditAffiliateDTO";
 
 interface IAffiliatesRepository {
     create(data: ICreateAffiliateDto): Promise<Affiliate>;

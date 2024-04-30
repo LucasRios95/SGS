@@ -51,7 +51,7 @@
 **RF**
 - Deve ser possível cadastrar um novo dependente;  ok
 - Deve ser possível alterar o cadastro de dependente;
-- Deve ser possível excluir o dependente;
+- Deve ser possível excluir o dependente; ok
 - Deve ser possível listar dependentes por filiado; ok
 
 **RN**
@@ -60,4 +60,59 @@
 - Somente o usuário administrador deve conseguir alterar o cadastro de um dependente; 
 - Somente o usuário administrador deve conseguir remover um dependente; 
 
+# CADASTRO DE CATEGORIA FINANCEIRA
+
+**RF**
+- Deve ser possível cadastrar uma nova categoria; ok
+- Deve ser possível listar todas as categorias; ok
+- Deve ser possível excluir uma categoria; 
+
+**RN**
+- Somente um usuário administrador deve conseguir remover uma categoria;
+- Uma categoria só pode ser removida caso não esteja ligada a nenhum lancamento financeiro;
+
+# LANCAMENTO FINANCEIRO
+
+**RF**
+- Deve ser possível cadastrar um novo Lançamento Financeiro a receber;
+- Deve ser possível cadastrar um novo lançamento financeiro a pagar;
+- Deve ser possível excluir um lançamento financeiro;
+- Deve ser possível alterar um lançamento financeiro;
+
+**RN**
+- Cada lançamento deve possuir uma categoria;
+- Cada lançamento deve estar relacionada a uma conta bancária;
+- Um lançamento cuja baixa já tenha sido feita, não poderá ser excluído;
+
+
+# BAIXA DO LANCAMENTO FINANCEIRO
+
+**RF**
+- Deve ser possível cadastrar uma baixa para cada lançamento realizado.
+- Deve ser possível alterar a baixa de um lancamento. 
+- Deve ser possível exlcuir uma baixa
+
+**RN**
+- Em caso de pagamento parcial a baixa não altera o status do lançamento mas altera seu valor;
+- Cada baixa deve gerar um comprovante no formato pdf;
+
+
+# CADASTRO DE PLANO DO SINDICATO
+
+**RF**
+- Deve ser Possível cadastrar um novo plano; 
+- Deve ser Possível alterar um plano;
+- Deve ser possível excluir um plano;
+
+**RN**
+- O plano deve ser mensal, trimestral ou anual; 
+- Cada plano deve possuir um filiado ativo; 
+- Cada plano cadastrado deve obrigatoriamente gerar um Contas a receber com o valor cadastrado;
+- O lançamento a receber deve ser gerado de acordo com o tipo escolhido
+
+# EXTRATO BANCÁRIO
+
+**RF**
+
+**RN**
 

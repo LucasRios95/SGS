@@ -10,7 +10,10 @@ import { IAffiliatesRepository } from "modules/Affiliate/repositories/IAffiliate
 import { AffiliatesRepository } from "modules/Affiliate/infra/typeorm/repositories/AffiliatesRepository";
 import { IDependentsRepository } from "modules/Affiliate/repositories/IDependentsRepository";
 import { DependentsRepository } from "modules/Affiliate/infra/typeorm/repositories/DependentsRepository";
-
+import { CategoriesRepository } from "modules/FinancialPostings/infra/typeorm/repositories/CategoriesRepository";
+import { ICategoriesRepository } from "modules/FinancialPostings/repositories/ICategoriesRepository";
+import { IFinancialPostingRepository } from "modules/FinancialPostings/repositories/IFinancialPostingRepository";
+import { FinancialPostingRepository } from "modules/FinancialPostings/infra/typeorm/repositories/FinancialPostingRepository";
 
 //ICompaniesRepository
 container.registerSingleton<ICompaniesRepository>(
@@ -36,8 +39,20 @@ container.registerSingleton<IAffiliatesRepository>(
     AffiliatesRepository
 );
 
-//IDependentRepository
+//IDependentsRepository
 container.registerSingleton<IDependentsRepository>(
     "DependentsRepository",
     DependentsRepository
+);
+
+//ICategoriesRepository
+container.registerSingleton<ICategoriesRepository>(
+    "CategoriesRepository",
+    CategoriesRepository
+);
+
+//IFinancialPostingRepository
+container.registerSingleton<IFinancialPostingRepository>(
+    "FinancialPostingRepository",
+    FinancialPostingRepository
 );

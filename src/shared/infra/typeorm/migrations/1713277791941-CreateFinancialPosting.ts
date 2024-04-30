@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
 export class CreateFinancialPosting1713277791941 implements MigrationInterface {
 
@@ -26,22 +26,22 @@ export class CreateFinancialPosting1713277791941 implements MigrationInterface {
 
                     {
                         name: "value",
-                        type: "number",
+                        type: "numeric",
                     },
 
                     {
                         name: "discount",
-                        type: "number"
+                        type: "numeric"
                     },
 
                     {
                         name: "fee",
-                        type: "number",
+                        type: "numeric",
                     },
 
                     {
                         name: "tax",
-                        type: "number"
+                        type: "numeric"
                     },
 
                     {
@@ -54,16 +54,24 @@ export class CreateFinancialPosting1713277791941 implements MigrationInterface {
                         type: "uuid"
                     },
 
-                    {
-                        name: "id_category",
-                        type: "uuid"
-                    }
                 ]
             })
-        )
+        );
+
+        await queryRunner.createForeignKey(
+            "financial_posting",
+            new TableForeignKey({
+                columnNames: ["id_account"],
+                referencedColumnNames: ["id"],
+                referencedTableName: "bankAccount",
+                onDelete: "SET NULL",
+            })
+        );
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropForeignKey("financial_posting", "id_account");
+
         await queryRunner.dropTable("financial_posting");
     }
 
