@@ -82,19 +82,10 @@
 **RN**
 - Cada lançamento deve possuir uma categoria;
 - Cada lançamento deve estar relacionada a uma conta bancária;
-- Um lançamento cuja baixa já tenha sido feita, não poderá ser excluído;
-
-
-# BAIXA DO LANCAMENTO FINANCEIRO
-
-**RF**
-- Deve ser possível cadastrar uma baixa para cada lançamento realizado.
-- Deve ser possível alterar a baixa de um lancamento. 
-- Deve ser possível exlcuir uma baixa
-
-**RN**
-- Em caso de pagamento parcial a baixa não altera o status do lançamento mas altera seu valor;
-- Cada baixa deve gerar um comprovante no formato pdf;
+- Caso a status do pagamento ainda seja "a pagar/a receber após a data de vencimento, deverá ser aplicada a multa ou juros conforme a regra do banco/instituição/contrato;
+- Se houver desconto o valor do lancamento deve ser subtraído do valor do desconto;
+- caso haja uma taxa a ser cobrada a mesma deve se somar ao valor do lancamento;
+- Cada lançamento deverá atualizar o saldo da conta bancária;
 
 
 # CADASTRO DE PLANO DO SINDICATO
@@ -108,11 +99,12 @@
 - O plano deve ser mensal, trimestral ou anual; 
 - Cada plano deve possuir um filiado ativo; 
 - Cada plano cadastrado deve obrigatoriamente gerar um Contas a receber com o valor cadastrado;
-- O lançamento a receber deve ser gerado de acordo com o tipo escolhido
+- O lançamento a receber deve ser gerado de acordo com o tipo escolhido;
 
 # EXTRATO BANCÁRIO
 
 **RF**
+
 
 **RN**
 
