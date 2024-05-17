@@ -18,7 +18,8 @@ class BankAccountsRepository implements IBankAccountsRepository{
      message,
      id_bank,
      id_company,
-     created_at   
+     created_at,
+     balance   
     }: ICreateBankAccountDto): Promise<BankAccount> {
         const bankAccount = await this.repository.create({
             account_number,
@@ -28,6 +29,7 @@ class BankAccountsRepository implements IBankAccountsRepository{
             id_bank,
             id_company,
             created_at,
+            balance,
         });
 
         this.repository.save(bankAccount);

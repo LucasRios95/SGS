@@ -37,6 +37,9 @@ export class BankAccount {
     @CreateDateColumn()
     created_at: Date;
 
+    @Column()
+    balance: number;
+
     constructor() {
         if (!this.id) {
             this.id = uuidV4();

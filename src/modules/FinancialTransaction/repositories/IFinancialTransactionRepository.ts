@@ -4,6 +4,6 @@ import { FinancialTransaction } from "../infra/typeorm/entities/FinancialTransac
 export interface IFinancialTransactionRepository {
     create(data: ICreateFinancialTransactionDto): Promise<FinancialTransaction>;
     list(): Promise<FinancialTransaction[]>;
-    edit(id_transaction, data: ICreateFinancialTransactionDto): Promise<FinancialTransaction>;
+    edit(id_transaction: string, data: ICreateFinancialTransactionDto): Promise<FinancialTransaction>;
     delete(id: string): Promise<boolean>;
 }

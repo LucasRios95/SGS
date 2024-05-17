@@ -11,6 +11,7 @@ interface IRequest {
     id_bank: string;
     id_company: string;
     created_at: string;
+    balance: number;
 }
 
 @injectable()
@@ -27,7 +28,8 @@ class CreateBankAccountUseCase {
         message,
         id_bank,
         id_company,
-        created_at
+        created_at,
+        balance = 0
     }: IRequest): Promise<BankAccount> {
         const accountAlreadyExists = await this.bankAccountsRepository.findByAccountNumber(account_number);
 
@@ -42,7 +44,8 @@ class CreateBankAccountUseCase {
             message,
             id_bank,
             id_company,
-            created_at
+            created_at,
+            balance
         });
 
         return bankAccount;

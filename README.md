@@ -85,7 +85,19 @@
 - Caso a status do pagamento ainda seja "a pagar/a receber após a data de vencimento, deverá ser aplicada a multa ou juros conforme a regra do banco/instituição/contrato;
 - Se houver desconto o valor do lancamento deve ser subtraído do valor do desconto;
 - caso haja uma taxa a ser cobrada a mesma deve se somar ao valor do lancamento;
-- Cada lançamento deverá atualizar o saldo da conta bancária;
+- O lançamento financeiro não pode ser excluído caso exista uma transação efetuada referente a ele;
+
+# TRANSAÇÃO FINANCEIRA
+
+**RF**
+- Deve ser possível criar uma transação financeira;
+- Deve ser possível excluir uma transação financeira;
+- Deve ser possível Editar o registro de uma transação;
+
+**RN**
+- Cada transação precisa ter um registro na tabela da lancamento financeiro;
+- Cada transação deverá atualizar a situação de cada lancamento financeiro como pago ou pgto_parcial;
+- Quando efetivada a transação, deverá ser creditado ou debitado o valor do saldo na conta bancária;
 
 
 # CADASTRO DE PLANO DO SINDICATO

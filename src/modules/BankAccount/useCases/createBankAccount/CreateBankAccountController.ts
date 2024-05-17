@@ -12,7 +12,8 @@ class CreateBankAccountController {
             message,
             id_bank,
             id_company,
-            created_at
+            created_at,
+            balance
         } = request.body;
 
         const createBankAccountUseCase = container.resolve(CreateBankAccountUseCase);
@@ -24,7 +25,8 @@ class CreateBankAccountController {
             message,
             id_bank,
             id_company,
-            created_at
+            created_at,
+            balance
         });
 
         return response.status(201).json(bankAccount);
