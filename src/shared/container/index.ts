@@ -14,6 +14,8 @@ import { CategoriesRepository } from "modules/FinancialPostings/infra/typeorm/re
 import { ICategoriesRepository } from "modules/FinancialPostings/repositories/ICategoriesRepository";
 import { IFinancialPostingRepository } from "modules/FinancialPostings/repositories/IFinancialPostingRepository";
 import { FinancialPostingRepository } from "modules/FinancialPostings/infra/typeorm/repositories/FinancialPostingRepository";
+import { IFinancialTransactionRepository } from "modules/FinancialTransaction/repositories/IFinancialTransactionRepository";
+import { FinancialTransactionRepository } from "modules/FinancialTransaction/infra/typeorm/repositories/FinancialTransactionRepository";
 
 //ICompaniesRepository
 container.registerSingleton<ICompaniesRepository>(
@@ -56,3 +58,10 @@ container.registerSingleton<IFinancialPostingRepository>(
     "FinancialPostingRepository",
     FinancialPostingRepository
 );
+
+//IFinancialTransactionRepository
+container.registerSingleton<IFinancialTransactionRepository>(
+    "FinancialTransactionRepository",
+    FinancialTransactionRepository
+);
+

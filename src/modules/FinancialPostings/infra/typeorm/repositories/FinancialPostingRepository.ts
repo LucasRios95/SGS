@@ -2,9 +2,6 @@ import { Repository, getRepository } from "typeorm";
 import { FinancialPosting } from "../entities/FinancialPosting";
 import { IFinancialPostingDto } from "modules/FinancialPostings/dtos/IFinancialPostingDTO";
 import { IFinancialPostingRepository } from "modules/FinancialPostings/repositories/IFinancialPostingRepository";
-
-
-
 class FinancialPostingRepository implements IFinancialPostingRepository {
     private repository: Repository<FinancialPosting>;
 
@@ -82,6 +79,14 @@ class FinancialPostingRepository implements IFinancialPostingRepository {
         });
 
         return financialPosting;
+    }
+
+    async updateStatus(id_financialPosting: string, status: string): Promise<void> {
+        await this.repository.query(
+            `UPDATE financial_posting 
+            SET payment_status = ${status} 
+            WHERE id = ${id_financialPosting}`
+        );
     }
 
     async delete(id: string): Promise<boolean> {

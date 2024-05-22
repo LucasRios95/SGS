@@ -98,6 +98,7 @@
 - Cada transação precisa ter um registro na tabela da lancamento financeiro;
 - Cada transação deverá atualizar a situação de cada lancamento financeiro como pago ou pgto_parcial;
 - Quando efetivada a transação, deverá ser creditado ou debitado o valor do saldo na conta bancária;
+- O valor de uma transação não pode ser nulo ou zero.
 
 
 # CADASTRO DE PLANO DO SINDICATO

@@ -48,6 +48,9 @@ export class FinancialPosting {
     @CreateDateColumn()
     created_at: Date;
 
+    @Column()
+    payment_status: string;
+
     constructor() {
         if (!this.id) {
             this.id = uuidV4();
