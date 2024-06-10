@@ -2,6 +2,9 @@ import { Repository, getRepository } from "typeorm";
 import { FinancialPosting } from "../entities/FinancialPosting";
 import { IFinancialPostingDto } from "modules/FinancialPostings/dtos/IFinancialPostingDTO";
 import { IFinancialPostingRepository } from "modules/FinancialPostings/repositories/IFinancialPostingRepository";
+import { AppError } from "shared/errors/AppError";
+
+
 class FinancialPostingRepository implements IFinancialPostingRepository {
     private repository: Repository<FinancialPosting>;
 
@@ -19,8 +22,8 @@ class FinancialPostingRepository implements IFinancialPostingRepository {
         tax,
         due_date,
         id_account,
-        id_category
-
+        id_category,
+        payment_status
     }): Promise<FinancialPosting> {
         const financialPosting = this.repository.create({
             id,
@@ -32,7 +35,8 @@ class FinancialPostingRepository implements IFinancialPostingRepository {
             tax,
             due_date,
             id_account,
-            id_category
+            id_category,
+            payment_status
         });
 
         await this.repository.save(financialPosting);
@@ -63,7 +67,8 @@ class FinancialPostingRepository implements IFinancialPostingRepository {
         tax,
         due_date,
         id_account,
-        id_category
+        id_category,
+        payment_status
     }): Promise<FinancialPosting> {
         const financialPosting = await this.repository.save({
             id,
@@ -75,7 +80,8 @@ class FinancialPostingRepository implements IFinancialPostingRepository {
             tax,
             due_date,
             id_account,
-            id_category
+            id_category,
+            payment_status
         });
 
         return financialPosting;

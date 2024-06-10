@@ -10,6 +10,7 @@ interface IFinancialPostingDto {
     due_date: Date;
     id_account: string;
     id_category: string;
+    payment_status: string;
 }
 
 export { IFinancialPostingDto };

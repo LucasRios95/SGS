@@ -17,9 +17,10 @@ class FinancialTransactionRepository implements IFinancialTransactionRepository 
         date,
         payment_type,
         payment_method,
+        id_account,
         id_financialPosting,
         created_at
-    }: ICreateFinancialTransactionDto): Promise<FinancialTransaction> {
+    }): Promise<FinancialTransaction> {
         const financialTransaction = this.repository.create({
             id,
             description,
@@ -27,6 +28,7 @@ class FinancialTransactionRepository implements IFinancialTransactionRepository 
             date,
             payment_type,
             payment_method,
+            id_account,
             id_financialPosting,
             created_at
         });
@@ -49,9 +51,10 @@ class FinancialTransactionRepository implements IFinancialTransactionRepository 
         date,
         payment_type,
         payment_method,
+        id_account,
         id_financialPosting,
         created_at
-    }: ICreateFinancialTransactionDto): Promise<FinancialTransaction> {
+    }): Promise<FinancialTransaction> {
         const financialTransaction = await this.repository.save({
             id,
             description,
@@ -59,6 +62,7 @@ class FinancialTransactionRepository implements IFinancialTransactionRepository 
             date,
             payment_type,
             payment_method,
+            id_account,
             id_financialPosting,
             created_at
         });

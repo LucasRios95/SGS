@@ -4,6 +4,13 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn 
 import { v4 as uuidV4 } from "uuid";
 import { Category } from "./Category";
 
+export enum PaymentStatus {
+    PENDING = 'pending',
+    PAID = 'paid',
+    PARCIAL_PAYMENT = 'parcial_payment',
+    OVERDUE = 'overdue'
+  }
+
 @Entity()
 export class FinancialPosting {
 
@@ -48,8 +55,8 @@ export class FinancialPosting {
     @CreateDateColumn()
     created_at: Date;
 
-    @Column()
-    payment_status: string;
+    @Column({type: 'enum', enum: PaymentStatus})
+    payment_status: PaymentStatus;
 
     constructor() {
         if (!this.id) {

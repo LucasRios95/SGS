@@ -13,6 +13,7 @@ interface IRequest {
     due_date: Date;
     id_account: string;
     id_category: string;
+    payment_status: string;
 };
 
 @injectable()
@@ -31,7 +32,8 @@ class CreateFinancialPostingUseCase {
         tax,
         due_date,
         id_account,
-        id_category
+        id_category,
+        payment_status = 'pending'
     }: IRequest): Promise<FinancialPosting> {
         const financialPosting = await this.createFinancialPostingRepository.create({
             posting_type,
@@ -42,7 +44,8 @@ class CreateFinancialPostingUseCase {
             tax,
             due_date,
             id_account,
-            id_category
+            id_category,
+            payment_status
         });
 
         return financialPosting;

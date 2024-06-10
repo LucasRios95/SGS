@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table, TableForeignKey} from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
 
 export class CreateFinancialTransaction1715347482225 implements MigrationInterface {
 
@@ -42,8 +42,14 @@ export class CreateFinancialTransaction1715347482225 implements MigrationInterfa
                     },
 
                     {
-                        name: "id_financialPosting",
+                        name: "id_account",
                         type: "uuid"
+                    },
+
+                    {
+                        name: "id_financialPosting",
+                        type: "uuid",
+                        isNullable: true
                     },
 
                     {
@@ -52,6 +58,16 @@ export class CreateFinancialTransaction1715347482225 implements MigrationInterfa
                         default: "now()"
                     }
                 ]
+            })
+        );
+
+        await queryRunner.createForeignKey(
+            "financial_transaction",
+            new TableForeignKey({
+                columnNames: ["id_account"],
+                referencedColumnNames: ["id"],
+                referencedTableName: "bankAccount",
+                onDelete: "SET NULL",
             })
         );
 
@@ -67,8 +83,9 @@ export class CreateFinancialTransaction1715347482225 implements MigrationInterfa
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.dropForeignKey("financial_transaction", "id_account");
         await queryRunner.dropForeignKey("financial_transaction", "id_financialPosting");
-
+        
         await queryRunner.dropTable("financial_transaction");
     }
 
