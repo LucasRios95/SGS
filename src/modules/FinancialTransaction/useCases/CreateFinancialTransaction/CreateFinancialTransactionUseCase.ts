@@ -78,10 +78,21 @@ class CreateFinancialTransactionUseCase {
             } else {
                 let updateValue = financialPosting.value - financialTransaction.value;
 
-                await this.financialPostingRepository.edit(id_financialPosting, {
-                    id: financialTransaction.id,
-                    value: updateValue
-                });
+                if(updateValue == 0) {
+                    await this.financialPostingRepository.edit(id_financialPosting, {
+                        id: id_financialPosting,
+                        value: updateValue,
+                        posting_type: financialPosting.posting_type,
+                        description: financialPosting.description,
+                        discount: financialPosting.discount,
+                        due_date: financialPosting.due_date,
+                        fee: financialPosting.fee,
+                        id_account: financialPosting.id_account,
+                        id_category: financialPosting.id_category,
+                        tax: financialPosting.tax,
+                        payment_status: 'paid'
+                    });    
+                } 
             }
         }
 
