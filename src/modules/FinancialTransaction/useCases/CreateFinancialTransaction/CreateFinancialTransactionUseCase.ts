@@ -78,7 +78,7 @@ class CreateFinancialTransactionUseCase {
             } else {
                 let updateValue = financialPosting.value - financialTransaction.value;
 
-                if(updateValue == 0) {
+                if (updateValue == 0) {
                     await this.financialPostingRepository.edit(id_financialPosting, {
                         id: id_financialPosting,
                         value: updateValue,
@@ -91,20 +91,29 @@ class CreateFinancialTransactionUseCase {
                         id_category: financialPosting.id_category,
                         tax: financialPosting.tax,
                         payment_status: 'paid'
-                    });    
-                } 
+                    });
+                }
             }
         }
 
         // ATUALIZA O VALOR DO SALDO NA CONTA BANCÁRIA
         let balance = bankAccount.balance;
 
-        financialTransaction.payment_type != 'deposit' 
-            ? balance -= financialTransaction.value 
+        financialTransaction.payment_type != 'deposit'
+            ? balance -= financialTransaction.value
             : balance += financialTransaction.value;
 
-        console.log(balance); // !!! CRIAR A FUNÇÃO DE EDITAR CONTA BANCÁRIA PARA ATUALZIAR O SALDO
-
+        // !!! CRIAR A FUNÇÃO DE EDITAR CONTA BANCÁRIA PARA ATUALZIAR O SALDO
+        await this.bankAccountRepository.updateBalance(financialTransaction.id_account, {
+            id: financialTransaction.id_account,
+            account_number: bankAccount.account_number,
+            digit: bankAccount.digit,
+            our_number: bankAccount.our_number,
+            message: bankAccount.message,
+            id_bank: bankAccount.id_bank,
+            id_company: bankAccount.id_company,
+            balance: balance
+        })
         return financialTransaction;
     }
 }

@@ -4,22 +4,22 @@ import { BankAccount } from "../entities/BankAccount";
 import { DeleteResult, Repository, getRepository } from "typeorm";
 
 
-class BankAccountsRepository implements IBankAccountsRepository{
+class BankAccountsRepository implements IBankAccountsRepository {
     private repository: Repository<BankAccount>;
 
     constructor() {
         this.repository = getRepository(BankAccount);
     }
-    
+
     async create({
-     account_number,
-     digit,
-     our_number,
-     message,
-     id_bank,
-     id_company,
-     created_at,
-     balance   
+        account_number,
+        digit,
+        our_number,
+        message,
+        id_bank,
+        id_company,
+        created_at,
+        balance
     }: ICreateBankAccountDto): Promise<BankAccount> {
         const bankAccount = await this.repository.create({
             account_number,
@@ -38,7 +38,7 @@ class BankAccountsRepository implements IBankAccountsRepository{
     }
 
     async findByAccountNumber(account_number: string): Promise<BankAccount> {
-        const bankAccount = await this.repository.findOne({account_number});
+        const bankAccount = await this.repository.findOne({ account_number });
 
         return bankAccount;
 
@@ -56,10 +56,36 @@ class BankAccountsRepository implements IBankAccountsRepository{
         return accountsList;
     }
 
-    async deleteBankAccount(account_number: string): Promise<Boolean> {
-        const isDeleted = await this.repository.delete({account_number});
+    async updateBalance(id_account, {
+        id,
+        account_number,
+        digit,
+        our_number,
+        message,
+        id_bank,
+        id_company,
+        created_at,
+        balance
+    }): Promise<BankAccount> {
+        const balanceUpdated = await this.repository.save({
+            id: id_account,
+            account_number,
+            digit,
+            our_number,
+            message,
+            id_bank,
+            id_company,
+            created_at,
+            balance
+        });
 
-        if(!isDeleted) {
+        return balanceUpdated;
+    }
+
+    async deleteBankAccount(account_number: string): Promise<Boolean> {
+        const isDeleted = await this.repository.delete({ account_number });
+
+        if (!isDeleted) {
             return false
         }
 
