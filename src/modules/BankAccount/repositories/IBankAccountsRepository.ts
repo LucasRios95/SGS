@@ -1,7 +1,7 @@
 import { Bank } from "modules/Banks/infra/typeorm/entities/Bank";
 import { ICreateBankAccountDto } from "../dtos/ICreateBankAccountDTO";
 import { BankAccount } from "../infra/typeorm/entities/BankAccount";
-import { IEditBankAccountDto } from "../dtos/IEditBankAccountDto";
+import { IEditBankAccountDto } from "../dtos/IEditBankAccountDTO";
 
 interface IBankAccountsRepository {
     create(data: ICreateBankAccountDto): Promise<BankAccount>;
