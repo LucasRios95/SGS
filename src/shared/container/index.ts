@@ -1,4 +1,5 @@
 import { container } from "tsyringe";
+import "./providers/DateProvider"
 
 import { CompaniesRepository } from "modules/Companies/infra/typeorm/repositories/CompaniesRepository";
 import { ICompaniesRepository } from "modules/Companies/repositories/ICompaniesRepository";
