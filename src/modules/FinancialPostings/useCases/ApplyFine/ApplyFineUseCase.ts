@@ -16,7 +16,7 @@ class ApplyFineUseCase {
 
     async execute(): Promise<FinancialPosting[]> {
         const financialPostings = await this.financialPostingRepository.list();
-        const dateNow = this.dateProvider.dateNow()
+        const dateNow = this.dateProvider.dateNow();
 
         for (const financialPosting of financialPostings) {
             let delay = this.dateProvider.compareInDays(financialPosting.due_date, dateNow);
@@ -26,19 +26,22 @@ class ApplyFineUseCase {
 
                 const updatedValue = Number(financialPosting.value) + fineAmount;
 
-                await this.financialPostingRepository.edit(financialPosting.id, {
-                    id: financialPosting.id,
-                    description: financialPosting.description,
-                    posting_type: financialPosting.posting_type,
-                    discount: financialPosting.discount,
-                    due_date: financialPosting.due_date,
-                    fee: financialPosting.fee,
-                    value: updatedValue,
-                    tax: financialPosting.tax,
-                    id_account: financialPosting.id_account,
-                    id_category: financialPosting.id_category,
-                    payment_status: "overdue",
-                });
+                await this.financialPostingRepository.edit(
+                    financialPosting.id,
+                    {
+                        id: financialPosting.id,
+                        description: financialPosting.description,
+                        posting_type: financialPosting.posting_type,
+                        discount: financialPosting.discount,
+                        due_date: financialPosting.due_date,
+                        fee: financialPosting.fee,
+                        value: Number(updatedValue.toFixed(2)),
+                        tax: financialPosting.tax,
+                        id_account: financialPosting.id_account,
+                        id_category: financialPosting.id_category,
+                        payment_status: "overdue",
+                    }
+                );
             }
         }
 

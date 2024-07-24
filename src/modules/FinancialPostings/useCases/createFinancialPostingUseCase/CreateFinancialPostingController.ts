@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { CreateFinancialPostingUseCase } from "./CreateFinancialPostingUseCase";
 
 class CreateFinancialPostingController {
-   async handle(request: Request, response: Response): Promise<Response> {
+    async handle(request: Request, response: Response): Promise<Response> {
         const {
             posting_type,
             description,
@@ -13,7 +13,8 @@ class CreateFinancialPostingController {
             tax,
             due_date,
             id_account,
-            id_category
+            id_category,
+            payment_status
         } = request.body;
 
         const createFinancialPostingUseCase = container.resolve(CreateFinancialPostingUseCase);
@@ -27,11 +28,12 @@ class CreateFinancialPostingController {
             tax,
             due_date,
             id_account,
-            id_category
+            id_category,
+            payment_status
         });
 
         return response.status(201).json(financialPosting);
-   }
+    }
 }
 
 export { CreateFinancialPostingController };
