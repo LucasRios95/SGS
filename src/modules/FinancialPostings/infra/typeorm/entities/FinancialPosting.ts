@@ -3,13 +3,14 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn 
 
 import { v4 as uuidV4 } from "uuid";
 import { Category } from "./Category";
+import { ColumnNumericTransformer } from "config/ColumnNumericTransformer";
 
 export enum PaymentStatus {
     PENDING = 'pending',
     PAID = 'paid',
     PARCIAL_PAYMENT = 'parcial_payment',
     OVERDUE = 'overdue'
-  }
+}
 
 @Entity()
 export class FinancialPosting {
@@ -23,16 +24,36 @@ export class FinancialPosting {
     @Column()
     description: string;
 
-    @Column()
+
+    @Column('numeric', {
+        precision: 7,
+        scale: 2,
+        transformer: new ColumnNumericTransformer()
+    })
     value: number;
 
-    @Column()
+
+    @Column('numeric', {
+        precision: 7,
+        scale: 2,
+        transformer: new ColumnNumericTransformer(),
+    })
     discount: number;
 
-    @Column()
+
+    @Column('numeric', {
+        precision: 7,
+        scale: 2,
+        transformer: new ColumnNumericTransformer(),
+    })
     fee: number;
 
-    @Column()
+
+    @Column('numeric', {
+        precision: 7,
+        scale: 2,
+        transformer: new ColumnNumericTransformer(),
+    })
     tax: number;
 
     @Column()
@@ -55,7 +76,7 @@ export class FinancialPosting {
     @CreateDateColumn()
     created_at: Date;
 
-    @Column({type: 'enum', enum: PaymentStatus})
+    @Column({ type: 'enum', enum: PaymentStatus })
     payment_status: PaymentStatus;
 
     constructor() {

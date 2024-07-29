@@ -1,3 +1,4 @@
+import { ColumnNumericTransformer } from "config/ColumnNumericTransformer";
 import { Bank } from "modules/Banks/infra/typeorm/entities/Bank";
 import { Company } from "modules/Companies/infra/typeorm/entities/Company";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
@@ -21,14 +22,14 @@ export class BankAccount {
     message: string;
 
     @ManyToOne(() => Bank)
-    @JoinColumn( { name:  "id_bank"})
+    @JoinColumn({ name: "id_bank" })
     bank: Bank;
 
     @Column()
     id_bank: string;
 
     @ManyToOne(() => Company)
-    @JoinColumn( { name:  "id_company"})
+    @JoinColumn({ name: "id_company" })
     company: Company;
 
     @Column()
@@ -37,7 +38,11 @@ export class BankAccount {
     @CreateDateColumn()
     created_at: Date;
 
-    @Column()
+    @Column('numeric', {
+        precision: 7,
+        scale: 2,
+        transformer: new ColumnNumericTransformer(),
+    })
     balance: number;
 
     constructor() {

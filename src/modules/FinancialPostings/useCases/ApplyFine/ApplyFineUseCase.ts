@@ -21,12 +21,15 @@ class ApplyFineUseCase {
         for (const financialPosting of financialPostings) {
             let delay = this.dateProvider.compareInDays(financialPosting.due_date, dateNow);
 
-            if (delay > 0 && (financialPosting.payment_status === "pending" || financialPosting.payment_status === "overdue")) {
-                const fineAmount = ((financialPosting.value * (financialPosting.fee / 100)) * (delay));
+            if (
+                delay > 0 && (financialPosting.payment_status === "pending" ||
+                    financialPosting.payment_status === "overdue")
+            ) {
+                const fineAmount = (financialPosting.value * (financialPosting.fee / 100)) * (delay);
 
-                const updatedValue = Number(financialPosting.value) + fineAmount;
+                const updatedValue = financialPosting.value + fineAmount;
 
-                await this.financialPostingRepository.edit(
+                this.financialPostingRepository.edit(
                     financialPosting.id,
                     {
                         id: financialPosting.id,
@@ -35,7 +38,7 @@ class ApplyFineUseCase {
                         discount: financialPosting.discount,
                         due_date: financialPosting.due_date,
                         fee: financialPosting.fee,
-                        value: Number(updatedValue.toFixed(2)),
+                        value: updatedValue,
                         tax: financialPosting.tax,
                         id_account: financialPosting.id_account,
                         id_category: financialPosting.id_category,

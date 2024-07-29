@@ -54,6 +54,10 @@ class CreateFinancialTransactionUseCase {
             throw new AppError("Insufficient Founds");
         }
 
+        if (value <= 0) {
+            throw new AppError("Transaction value should be higher than 0");
+        }
+
         // REALIZA A OPERAÇÃO 
         const financialTransaction = await this.financialTransactionRepository.create({
             id,
@@ -93,6 +97,22 @@ class CreateFinancialTransactionUseCase {
                         payment_status: 'paid'
                     });
                 }
+
+                if (updateValue > 0) {
+                    await this.financialPostingRepository.edit(id_financialPosting, {
+                        id: id_financialPosting,
+                        value: updateValue,
+                        posting_type: financialPosting.posting_type,
+                        description: financialPosting.description,
+                        discount: financialPosting.discount,
+                        due_date: financialPosting.due_date,
+                        fee: financialPosting.fee,
+                        id_account: financialPosting.id_account,
+                        id_category: financialPosting.id_category,
+                        tax: financialPosting.tax,
+                        payment_status: financialPosting.payment_status
+                    });
+                }
             }
         }
 
@@ -103,7 +123,7 @@ class CreateFinancialTransactionUseCase {
             ? balance -= financialTransaction.value
             : balance += financialTransaction.value;
 
-        // !!! CRIAR A FUNÇÃO DE EDITAR CONTA BANCÁRIA PARA ATUALZIAR O SALDO
+        // FUNÇÃO DE EDITAR CONTA BANCÁRIA PARA ATUALZIAR O SALDO
         await this.bankAccountRepository.updateBalance(financialTransaction.id_account, {
             id: financialTransaction.id_account,
             account_number: bankAccount.account_number,
@@ -113,7 +133,8 @@ class CreateFinancialTransactionUseCase {
             id_bank: bankAccount.id_bank,
             id_company: bankAccount.id_company,
             balance: balance
-        })
+        });
+
         return financialTransaction;
     }
 }

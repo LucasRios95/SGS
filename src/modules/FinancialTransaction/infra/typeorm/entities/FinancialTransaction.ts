@@ -2,6 +2,7 @@ import { FinancialPosting } from "modules/FinancialPostings/infra/typeorm/entiti
 import { BankAccount } from "modules/BankAccount/infra/typeorm/entities/BankAccount";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
+import { ColumnNumericTransformer } from "config/ColumnNumericTransformer";
 
 export enum PaymentType {
     DEPOSIT = 'deposit',
@@ -25,16 +26,21 @@ export class FinancialTransaction {
     @Column()
     description: string;
 
-    @Column()
+
+    @Column('numeric', {
+        precision: 7,
+        scale: 2,
+        transformer: new ColumnNumericTransformer()
+    })
     value: number;
 
     @Column()
     date: Date;
 
-    @Column({type: 'enum', enum: PaymentType})
+    @Column({ type: 'enum', enum: PaymentType })
     payment_type: PaymentType;
 
-    @Column({type: 'enum', enum: PaymentMethod})
+    @Column({ type: 'enum', enum: PaymentMethod })
     payment_method: PaymentMethod;
 
     @ManyToOne(() => BankAccount)

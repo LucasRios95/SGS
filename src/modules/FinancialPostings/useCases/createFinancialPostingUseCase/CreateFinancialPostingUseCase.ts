@@ -35,6 +35,7 @@ class CreateFinancialPostingUseCase {
         id_category,
         payment_status = 'pending'
     }: IRequest): Promise<FinancialPosting> {
+
         const financialPosting = await this.createFinancialPostingRepository.create({
             posting_type,
             description,
