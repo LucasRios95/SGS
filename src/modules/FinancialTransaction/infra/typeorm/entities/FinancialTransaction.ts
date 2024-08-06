@@ -1,8 +1,9 @@
 import { FinancialPosting } from "modules/FinancialPostings/infra/typeorm/entities/FinancialPosting";
 import { BankAccount } from "modules/BankAccount/infra/typeorm/entities/BankAccount";
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
-import { v4 as uuidV4 } from "uuid";
 import { ColumnNumericTransformer } from "config/ColumnNumericTransformer";
+
+import { v4 as uuidV4 } from "uuid";
 
 export enum PaymentType {
     DEPOSIT = 'deposit',
