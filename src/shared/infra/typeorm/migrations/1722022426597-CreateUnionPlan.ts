@@ -31,11 +31,6 @@ export class CreateUnionPlan1722022426597 implements MigrationInterface {
                     },
 
                     {
-                        name: "id_financialPosting",
-                        type: "uuid",
-                    },
-
-                    {
                         name: "id_affiliate",
                         type: "uuid"
                     },
@@ -52,16 +47,6 @@ export class CreateUnionPlan1722022426597 implements MigrationInterface {
         await queryRunner.createForeignKey(
             "union_plan",
             new TableForeignKey({
-                columnNames: ["id_financialPosting"],
-                referencedColumnNames: ["id"],
-                referencedTableName: "financial_posting",
-                onDelete: "SET NULL",
-            })
-        );
-
-        await queryRunner.createForeignKey(
-            "union_plan",
-            new TableForeignKey({
                 columnNames: ["id_affiliate"],
                 referencedColumnNames: ["id"],
                 referencedTableName: "affiliate",
@@ -71,10 +56,8 @@ export class CreateUnionPlan1722022426597 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropForeignKey("union_plan", "id_financialPosting");
         await queryRunner.dropForeignKey("union_plan", "id_affiliate");
 
         await queryRunner.dropTable("union_plan");
     }
-
 }

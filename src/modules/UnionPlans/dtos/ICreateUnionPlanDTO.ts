@@ -5,8 +5,7 @@ interface ICreateUnionPlanDto {
     value: number;
     status: string;
     id_affiliate: string;
-    id_financialPosting: string;
     created_At: Date;
 }
 
-export { ICreateUnionPlanDto };
+export { ICreateUnionPlanDto }; 

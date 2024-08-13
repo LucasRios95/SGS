@@ -2,7 +2,6 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn 
 import { ColumnNumericTransformer } from "config/ColumnNumericTransformer";
 
 import { Affiliate } from "modules/Affiliate/infra/typeorm/entities/Affiliate";
-import { FinancialPosting } from "modules/FinancialPostings/infra/typeorm/entities/FinancialPosting";
 
 import { v4 as uuidV4 } from "uuid";
 
@@ -31,13 +30,6 @@ export class UnionPlan {
 
     @Column()
     id_affiliate: string;
-
-    @ManyToOne(() => FinancialPosting)
-    @JoinColumn({ name: "id_financialPosting" })
-    financialPosting: FinancialPosting;
-
-    @Column()
-    id_financialPosting: string;
 
     @CreateDateColumn()
     created_at: Date;

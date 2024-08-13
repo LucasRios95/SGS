@@ -17,6 +17,8 @@ import { IFinancialPostingRepository } from "modules/FinancialPostings/repositor
 import { FinancialPostingRepository } from "modules/FinancialPostings/infra/typeorm/repositories/FinancialPostingRepository";
 import { IFinancialTransactionRepository } from "modules/FinancialTransaction/repositories/IFinancialTransactionRepository";
 import { FinancialTransactionRepository } from "modules/FinancialTransaction/infra/typeorm/repositories/FinancialTransactionRepository";
+import { IUnionPlanRepository } from "modules/UnionPlans/repositories/IUnionPlanRepository";
+import { UnionPlanRepository } from "modules/UnionPlans/infra/typeorm/repositories/UnionPlanRepository";
 
 //ICompaniesRepository
 container.registerSingleton<ICompaniesRepository>(
@@ -64,5 +66,11 @@ container.registerSingleton<IFinancialPostingRepository>(
 container.registerSingleton<IFinancialTransactionRepository>(
     "FinancialTransactionRepository",
     FinancialTransactionRepository
+);
+
+//IUnionPlanRepository
+container.registerSingleton<IUnionPlanRepository>(
+    "UnionPlanRepository",
+    UnionPlanRepository
 );
 
