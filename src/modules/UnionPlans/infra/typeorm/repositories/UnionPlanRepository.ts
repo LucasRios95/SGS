@@ -16,16 +16,18 @@ class UnionPlanRepository implements IUnionPlanRepository {
         value,
         status,
         id_affiliate,
-        created_At
+        created_at
     }: ICreateUnionPlanDto): Promise<UnionPlan> {
-        const unionPlan = await this.repository.save({
+        const unionPlan = this.repository.create({
             id,
             payment_type,
             value,
             status,
             id_affiliate,
-            created_At
+            created_at
         });
+
+        this.repository.save(unionPlan)
 
         return unionPlan;
     }
@@ -36,13 +38,19 @@ class UnionPlanRepository implements IUnionPlanRepository {
         return UnionPlansList;
     }
 
+    async findById(id: string): Promise<UnionPlan> {
+        const unionPlan = await this.repository.findOne(id);
+
+        return unionPlan;
+    }
+
     async edit(id_plan: string, {
         id,
         payment_type,
         value,
         status,
         id_affiliate,
-        created_At
+        created_at
     }): Promise<UnionPlan> {
         const unionPlan = await this.repository.save({
             id,
@@ -50,7 +58,7 @@ class UnionPlanRepository implements IUnionPlanRepository {
             value,
             status,
             id_affiliate,
-            created_At
+            created_at
         });
 
         return unionPlan;

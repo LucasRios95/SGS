@@ -6,6 +6,7 @@ import { bankAccountRoutes } from "./bankAccounts.routes";
 import { affiliateRoutes } from "./affiliates.routes";
 import { financialRoutes } from "./financialPostings.routes";
 import { transactionRoutes } from "./financialTransaction.routes";
+import { unionPlanRoutes } from "./unionPlans.routes";
 
 const router = Router();
 
@@ -15,5 +16,6 @@ router.use("/bankAccounts", bankAccountRoutes);
 router.use("/affiliates", affiliateRoutes);
 router.use("/financialPostings", financialRoutes);
 router.use("/financialTransaction", transactionRoutes);
+router.use("/unionPlan", unionPlanRoutes);
 
 export { router };

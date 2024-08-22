@@ -11,7 +11,7 @@ class CreateUnionPlanController {
             value,
             status,
             id_affiliate,
-            created_At
+            created_at
         } = request.body;
 
         const createUnionPlanUseCase = container.resolve(CreateUnionPlanUseCase);
@@ -22,7 +22,7 @@ class CreateUnionPlanController {
             value,
             status,
             id_affiliate,
-            created_At
+            created_at
         });
 
         return response.status(201).json(unionPlan);

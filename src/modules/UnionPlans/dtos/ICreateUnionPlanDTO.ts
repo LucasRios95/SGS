@@ -5,7 +5,7 @@ interface ICreateUnionPlanDto {
     value: number;
     status: string;
     id_affiliate: string;
-    created_At: Date;
+    created_at: Date;
 }
 
 export { ICreateUnionPlanDto }; 

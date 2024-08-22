@@ -1,5 +1,6 @@
 import { UnionPlan } from "modules/UnionPlans/infra/typeorm/entities/UnionPlan";
 import { IUnionPlanRepository } from "modules/UnionPlans/repositories/IUnionPlanRepository";
+import { AppError } from "shared/errors/AppError";
 import { inject, injectable } from "tsyringe";
 
 interface IRequest {
@@ -12,13 +13,13 @@ interface IRequest {
 }
 
 @injectable()
-class CreateUnionPlanUseCase {
+class EditUnionPlanUseCase {
     constructor(
         @inject("UnionPlanRepository")
         private unionPlanRepository: IUnionPlanRepository
     ) { }
 
-    async execute({
+    async execute(id_plan, {
         id,
         payment_type,
         value,
@@ -26,7 +27,13 @@ class CreateUnionPlanUseCase {
         id_affiliate,
         created_at
     }: IRequest): Promise<UnionPlan> {
-        const unionPlan = await this.unionPlanRepository.create({
+        const unionPlan = await this.unionPlanRepository.findById(id_plan);
+
+        if (!unionPlan) {
+            throw new AppError("Union plan does not exists");
+        }
+
+        const editedPlan = await this.unionPlanRepository.edit(id_plan, {
             id,
             payment_type,
             value,
@@ -35,8 +42,9 @@ class CreateUnionPlanUseCase {
             created_at
         });
 
-        return unionPlan;
+        return editedPlan;
     }
+
 }
 
-export { CreateUnionPlanUseCase };
+export { EditUnionPlanUseCase };
