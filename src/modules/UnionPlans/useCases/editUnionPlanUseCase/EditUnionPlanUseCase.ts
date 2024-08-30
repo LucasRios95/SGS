@@ -19,7 +19,7 @@ class EditUnionPlanUseCase {
         private unionPlanRepository: IUnionPlanRepository
     ) { }
 
-    async execute(id_plan, {
+    async execute(id_plan: string, {
         id,
         payment_type,
         value,
@@ -30,11 +30,11 @@ class EditUnionPlanUseCase {
         const unionPlan = await this.unionPlanRepository.findById(id_plan);
 
         if (!unionPlan) {
-            throw new AppError("Union plan does not exists");
+            throw new AppError("Union plan does not exists", 404);
         }
 
         const editedPlan = await this.unionPlanRepository.edit(id_plan, {
-            id,
+            id: id_plan,
             payment_type,
             value,
             status,
@@ -44,7 +44,6 @@ class EditUnionPlanUseCase {
 
         return editedPlan;
     }
-
 }
 
 export { EditUnionPlanUseCase };
