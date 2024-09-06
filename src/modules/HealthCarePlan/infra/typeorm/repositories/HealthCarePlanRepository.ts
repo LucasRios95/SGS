@@ -26,7 +26,7 @@ class HealthCarePlanRepository implements IHealthCarePlanRepository {
             created_at
         });
 
-        this.repository.save(healthCarePlan);
+        await this.repository.save(healthCarePlan);
 
         return healthCarePlan;
     }
@@ -35,6 +35,12 @@ class HealthCarePlanRepository implements IHealthCarePlanRepository {
         const healthCarePlans = await this.repository.find();
 
         return healthCarePlans;
+    }
+
+    async findById(id: string): Promise<HealthCarePlan> {
+        const healthCarePlan = await this.repository.findOne(id);
+
+        return healthCarePlan;
     }
 
     async edit(id_carePlan: string, {
@@ -55,8 +61,14 @@ class HealthCarePlanRepository implements IHealthCarePlanRepository {
         return editedPlan;
     }
 
-    async delete(id_carePlan: string): Promise<boolean> {
-        const isDeleted = await this.repository.delete(id_carePlan);
+    async findByIds(ids: string[]): Promise<HealthCarePlan[]> {
+        const healthCarePlans = await this.repository.findByIds(ids);
+
+        return healthCarePlans;
+    }
+
+    async delete(id: string): Promise<boolean> {
+        const isDeleted = await this.repository.delete(id);
 
         if (!isDeleted) {
             return false;

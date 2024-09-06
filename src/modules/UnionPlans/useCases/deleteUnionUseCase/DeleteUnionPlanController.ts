@@ -5,14 +5,18 @@ import { DeleteUnionPlanUseCase } from "./DeleteUnionPlanUseCase";
 class DeleteUnionPlanController {
 
     async handle(request: Request, response: Response) {
-        const id = request.params.id;
+        try {
+            const id = request.params.id;
 
-        const deleteUnionPlanUseCase = container.resolve(DeleteUnionPlanUseCase);
+            const deleteUnionPlanUseCase = container.resolve(DeleteUnionPlanUseCase);
 
-        const deletedPlan = deleteUnionPlanUseCase.execute(id);
+            const isDeleted = deleteUnionPlanUseCase.execute(id);
 
-        return response.status(200).json('message: Union Plan deleted with success!');
+            return response.status(200);
 
+        } catch (error) {
+            return response.status(500).json({ error: error.message });
+        }
     }
 }
 

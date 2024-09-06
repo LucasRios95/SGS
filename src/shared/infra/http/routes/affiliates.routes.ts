@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { CreateDependentController } from "modules/Affiliate/useCases/createDependent/CreateDependentController";
-import { CreateAffiliateController } from "modules/Affiliate/useCases/createAffiliate/CreateAffiliateController";
+import { CreateDependentController } from "modules/Affiliate/useCases/CreateDependent/CreateDependentController";
+import { CreateAffiliateController } from "modules/Affiliate/useCases/CreateAffiliate/CreateAffiliateController";
 import { ListAffiliateController } from "modules/Affiliate/useCases/listAffiliate/ListAffiliateController";
 import { ListDependentController } from "modules/Affiliate/useCases/listDependent/ListDependentController";
 import { ListDependentByAffiliateController } from "modules/Affiliate/useCases/listDependentByAffiliateUseCase/ListDependentByAffiliateController";
@@ -22,6 +22,7 @@ const listDependentController = new ListDependentController();
 const listDependentByAffiliateController = new ListDependentByAffiliateController();
 const editDependentController = new EditDependentController();
 const deleteDependentController = new DeleteDependentController();
+const createHealthCareAffiliateController = new CreateAffiliateController();
 
 
 affiliateRoutes.post("/", createAffiliateController.handle);
@@ -32,6 +33,7 @@ affiliateRoutes.post("/dependents", createDependentController.handle);
 affiliateRoutes.get("/dependents", listDependentController.handle);
 affiliateRoutes.get("/dependents/:id", listDependentByAffiliateController.handle);
 affiliateRoutes.put("/dependents/:id", editDependentController.handle);
+affiliateRoutes.post("/healthCarePlans/:id", createHealthCareAffiliateController.handle);
 affiliateRoutes.delete("/dependents/:id", deleteDependentController.handle);
 
 export { affiliateRoutes };

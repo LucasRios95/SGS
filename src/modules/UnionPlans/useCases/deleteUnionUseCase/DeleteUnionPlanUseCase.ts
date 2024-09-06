@@ -13,9 +13,7 @@ class DeleteUnionPlanUseCase {
         const isDeleted = await this.unionPlanRepository.delete(id);
 
         if (!isDeleted) {
-            throw new AppError("Union plan does not exists", 404);
-
-            return false;
+            throw new AppError("Union plan is not deleted", 500);
         }
 
         return true;

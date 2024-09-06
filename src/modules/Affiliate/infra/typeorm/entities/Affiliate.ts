@@ -1,4 +1,5 @@
 import { Company } from "modules/Companies/infra/typeorm/entities/Company";
+import { HealthCarePlan } from "modules/HealthCarePlan/infra/typeorm/entities/HealthCarePlan";
 import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid"
 
@@ -16,7 +17,7 @@ export class Affiliate {
 
     @Column()
     cnpj_cpf: string;
-    
+
     @Column()
     crc: string;
 
@@ -35,20 +36,19 @@ export class Affiliate {
     @Column()
     active: boolean;
 
-    
-    // @ManyToMany(() => Company)
-    // @JoinTable({
-    //     name: "affiliate_company",
-    //     joinColumns: [{ name: "id_affiliate" }],
-    //     inverseJoinColumns: [{ name: "id_company" }],
-    // })
-    // companies: Company[];
+    @ManyToMany(() => HealthCarePlan)
+    @JoinTable({
+        name: "affiliate_healthCarePlan",
+        joinColumns: [{ name: "id_affiliate" }],
+        inverseJoinColumns: [{ name: "id_healthCarePlan" }],
+    })
+    healthCarePlans: HealthCarePlan[];
 
     @CreateDateColumn()
     created_at: Date;
 
     constructor() {
-        if(!this.id) {
+        if (!this.id) {
             this.id = uuidV4();
         }
     }

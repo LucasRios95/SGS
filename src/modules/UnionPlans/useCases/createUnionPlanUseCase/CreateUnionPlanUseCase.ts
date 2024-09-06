@@ -26,6 +26,7 @@ class CreateUnionPlanUseCase {
         id_affiliate,
         created_at
     }: IRequest): Promise<UnionPlan> {
+
         const unionPlan = await this.unionPlanRepository.create({
             id,
             payment_type,
