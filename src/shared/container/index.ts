@@ -21,6 +21,8 @@ import { IUnionPlanRepository } from "modules/UnionPlans/repositories/IUnionPlan
 import { UnionPlanRepository } from "modules/UnionPlans/infra/typeorm/repositories/UnionPlanRepository";
 import { IHealthCarePlanRepository } from "modules/HealthCarePlan/repositories/IHealthCarePlanRepository";
 import { HealthCarePlanRepository } from "modules/HealthCarePlan/infra/typeorm/repositories/HealthCarePlanRepository";
+import { IMedicalAgreementRepository } from "modules/MedicalAgreement/repositories/IMedicalAgreementRepository";
+import { MedicalAgreementRepository } from "modules/MedicalAgreement/infra/typeorm/repositories/MedicalAgreementRepository";
 
 
 //ICompaniesRepository
@@ -82,3 +84,7 @@ container.registerSingleton<IHealthCarePlanRepository>(
     HealthCarePlanRepository
 );
 
+container.registerSingleton<IMedicalAgreementRepository>(
+    "MedicalAgreementRepository",
+    MedicalAgreementRepository
+);

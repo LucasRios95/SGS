@@ -9,7 +9,7 @@ interface IRequest {
     description: string;
     pay_value: number;
     receive_value: number;
-    created_at: Date;
+    id_medicalAgreement: string;
 }
 
 @injectable()
@@ -24,7 +24,7 @@ class EditHealthCarePlanUseCase {
         description,
         pay_value,
         receive_value,
-        created_at
+        id_medicalAgreement
     }: IRequest): Promise<HealthCarePlan> {
         const healthCarePlan = await this.healthCarePlanRepository.findById(id_carePlan);
 
@@ -37,7 +37,7 @@ class EditHealthCarePlanUseCase {
             description,
             pay_value,
             receive_value,
-            created_at
+            id_medicalAgreement
         });
 
         return editedPlan;

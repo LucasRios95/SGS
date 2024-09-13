@@ -1,5 +1,6 @@
 import { ColumnNumericTransformer } from "config/ColumnNumericTransformer";
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { MedicalAgreement } from "modules/MedicalAgreement/infra/typeorm/entities/MedicalAgreement";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
 
 import { v4 as uuidV4 } from "uuid";
 
@@ -24,6 +25,13 @@ export class HealthCarePlan {
         transformer: new ColumnNumericTransformer()
     })
     receive_value: number;
+
+    @ManyToOne(() => MedicalAgreement)
+    @JoinColumn({ name: "id_medicalAgreement" })
+    medicalAgreement: MedicalAgreement
+
+    @Column()
+    id_medicalAgreement: string;
 
     @CreateDateColumn()
     created_at: Date;

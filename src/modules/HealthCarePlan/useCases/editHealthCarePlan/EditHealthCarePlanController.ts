@@ -10,7 +10,7 @@ class EditHealthCarePlanController {
             description,
             pay_value,
             receive_value,
-            created_at
+            id_medicalAgreement
         } = request.body;
 
         const editHealthCarePlanUseCase = container.resolve(EditHealthCarePlanUseCase);
@@ -20,7 +20,7 @@ class EditHealthCarePlanController {
             description,
             pay_value,
             receive_value,
-            created_at
+            id_medicalAgreement
         });
 
         return response.status(200).json(editedPlan);

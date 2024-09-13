@@ -9,7 +9,7 @@ class CreateHealthCarePlanController {
             description,
             pay_value,
             receive_value,
-            created_at
+            id_medicalAgreement
         } = request.body;
 
         const createHealthCarePlanUseCase = container.resolve(CreateHealthCarePlanUseCase);
@@ -19,7 +19,7 @@ class CreateHealthCarePlanController {
             description,
             pay_value,
             receive_value,
-            created_at
+            id_medicalAgreement
         });
 
         return response.status(201).json(healthCarePlan);

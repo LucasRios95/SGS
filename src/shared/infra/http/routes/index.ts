@@ -8,6 +8,7 @@ import { financialRoutes } from "./financialPostings.routes";
 import { transactionRoutes } from "./financialTransaction.routes";
 import { unionPlanRoutes } from "./unionPlans.routes";
 import { healthCarePlanRoutes } from "./healthCarePlans.routes";
+import { medicalAgreementRoutes } from "./medicalAgreement.routes";
 
 const router = Router();
 
@@ -19,5 +20,6 @@ router.use("/financialPostings", financialRoutes);
 router.use("/financialTransaction", transactionRoutes);
 router.use("/unionPlan", unionPlanRoutes);
 router.use("/healthCarePlan", healthCarePlanRoutes);
+router.use("/medicalAgreement", medicalAgreementRoutes);
 
 export { router };

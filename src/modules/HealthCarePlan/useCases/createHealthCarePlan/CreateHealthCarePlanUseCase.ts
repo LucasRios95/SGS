@@ -1,3 +1,4 @@
+import { IFinancialPostingRepository } from "modules/FinancialPostings/repositories/IFinancialPostingRepository";
 import { HealthCarePlan } from "modules/HealthCarePlan/infra/typeorm/entities/HealthCarePlan";
 import { IHealthCarePlanRepository } from "modules/HealthCarePlan/repositories/IHealthCarePlanRepository";
 import { inject, injectable } from "tsyringe";
@@ -7,14 +8,16 @@ interface IRequest {
     description: string;
     pay_value: number;
     receive_value: number;
-    created_at: Date;
+    id_medicalAgreement: string;
 }
 
 @injectable()
 class CreateHealthCarePlanUseCase {
     constructor(
         @inject("HealthCarePlanRepository")
-        private healthCarePlanRepository: IHealthCarePlanRepository
+        private healthCarePlanRepository: IHealthCarePlanRepository,
+        @inject("FinalcialPostingRepository")
+        private financialPostingRepository: IFinancialPostingRepository
     ) { }
 
     async execute({
@@ -22,18 +25,21 @@ class CreateHealthCarePlanUseCase {
         description,
         pay_value,
         receive_value,
-        created_at
+        id_medicalAgreement,
+
     }: IRequest): Promise<HealthCarePlan> {
         const healthCarePlan = await this.healthCarePlanRepository.create({
             id,
             description,
             pay_value,
             receive_value,
-            created_at
+            id_medicalAgreement,
         });
 
         return healthCarePlan;
     }
+
+
 }
 
 export { CreateHealthCarePlanUseCase };

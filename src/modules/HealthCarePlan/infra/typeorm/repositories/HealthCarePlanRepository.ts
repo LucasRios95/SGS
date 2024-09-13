@@ -3,7 +3,6 @@ import { getRepository, Repository } from "typeorm";
 import { HealthCarePlan } from "../entities/HealthCarePlan";
 import { ICreateHealthCarePlanDTO } from "modules/HealthCarePlan/dtos/ICreateHealthCarePlanDTO";
 
-
 class HealthCarePlanRepository implements IHealthCarePlanRepository {
     private repository: Repository<HealthCarePlan>;
 
@@ -16,14 +15,14 @@ class HealthCarePlanRepository implements IHealthCarePlanRepository {
         description,
         pay_value,
         receive_value,
-        created_at
+        id_medicalAgreement
     }: ICreateHealthCarePlanDTO): Promise<HealthCarePlan> {
         const healthCarePlan = this.repository.create({
             id,
             description,
             pay_value,
             receive_value,
-            created_at
+            id_medicalAgreement
         });
 
         await this.repository.save(healthCarePlan);
@@ -48,14 +47,14 @@ class HealthCarePlanRepository implements IHealthCarePlanRepository {
         description,
         pay_value,
         receive_value,
-        created_at
+        id_medicalAgreement,
     }: ICreateHealthCarePlanDTO): Promise<HealthCarePlan> {
         const editedPlan = await this.repository.save({
             id,
             description,
             pay_value,
             receive_value,
-            created_at
+            id_medicalAgreement
         });
 
         return editedPlan;

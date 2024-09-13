@@ -2,12 +2,12 @@ import { Router } from "express";
 import { DeleteAffiliateController } from "modules/Affiliate/useCases/deleteAffiliate/DeleteAffiliateController";
 import { ApplyFineController } from "modules/FinancialPostings/useCases/ApplyFine/ApplyFineController";
 import { CreateCategoryController } from "modules/FinancialPostings/useCases/createCategory/CreateCategoryController";
-import { CreateFinancialPostingController } from "modules/FinancialPostings/useCases/createFinancialPostingUseCase/CreateFinancialPostingController";
-import { DeleteFinancialPostingController } from "modules/FinancialPostings/useCases/deleteFinancialPostingUseCase/DeleteFinancialPostingController";
-import { DeleteFinancialPostingUseCase } from "modules/FinancialPostings/useCases/deleteFinancialPostingUseCase/DeleteFinancialPostingUseCase";
-import { EditFinancialPostingController } from "modules/FinancialPostings/useCases/editFinancialPostingUseCase/EditFinancialPostingController";
-import { ListCategoriesController } from "modules/FinancialPostings/useCases/listCategoriesUseCase/ListCategoriesController";
-import { ListFinancialPostingController } from "modules/FinancialPostings/useCases/listFinancialPostingUseCase/ListFinancialPostingController";
+import { CreateFinancialPostingController } from "modules/FinancialPostings/useCases/createFinancialPosting/CreateFinancialPostingController";
+import { DeleteFinancialPostingController } from "modules/FinancialPostings/useCases/deleteFinancialPosting/DeleteFinancialPostingController";
+import { DeleteFinancialPostingUseCase } from "modules/FinancialPostings/useCases/deleteFinancialPosting/DeleteFinancialPostingUseCase";
+import { EditFinancialPostingController } from "modules/FinancialPostings/useCases/editFinancialPosting/EditFinancialPostingController";
+import { ListCategoriesController } from "modules/FinancialPostings/useCases/listCategories/ListCategoriesController";
+import { ListFinancialPostingController } from "modules/FinancialPostings/useCases/listFinancialPosting/ListFinancialPostingController";
 
 const financialRoutes = Router();
 

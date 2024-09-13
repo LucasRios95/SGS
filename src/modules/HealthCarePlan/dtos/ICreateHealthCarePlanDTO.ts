@@ -3,7 +3,7 @@ interface ICreateHealthCarePlanDTO {
     description: string;
     pay_value: number;
     receive_value: number;
-    created_at: Date;
+    id_medicalAgreement: string;
 }
 
 export { ICreateHealthCarePlanDTO };

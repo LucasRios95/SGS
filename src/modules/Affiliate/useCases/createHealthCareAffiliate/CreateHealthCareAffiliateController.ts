@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 import { container } from "tsyringe";
 import { CreateHealthCareAffiliateUseCase } from "./CreateHealthCareAffiliateUseCase";
 
-
-
 class CreateHealthCareAffiliateController {
     async handle(request: Request, response: Response): Promise<Response> {
         const { id } = request.params;

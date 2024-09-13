@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { CreateUnionPlanController } from 'modules/UnionPlans/useCases/createUnionPlanUseCase/CreateUnionPlanController';
-import { DeleteUnionPlanController } from 'modules/UnionPlans/useCases/deleteUnionUseCase/DeleteUnionPlanController';
-import { EditUnionPlanController } from 'modules/UnionPlans/useCases/editUnionPlanUseCase/EditUnionPlanController';
-import { ListUnionPlanController } from 'modules/UnionPlans/useCases/listUnionPlanUseCase/ListUnionPlanController';
+import { CreateUnionPlanController } from 'modules/UnionPlans/useCases/createUnionPlan/CreateUnionPlanController';
+import { DeleteUnionPlanController } from 'modules/UnionPlans/useCases/deleteUnion/DeleteUnionPlanController';
+import { EditUnionPlanController } from 'modules/UnionPlans/useCases/editUnionPlan/EditUnionPlanController';
+import { ListUnionPlanController } from 'modules/UnionPlans/useCases/listUnionPlan/ListUnionPlanController';
 
 const unionPlanRoutes = Router();
 
