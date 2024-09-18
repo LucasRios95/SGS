@@ -16,8 +16,6 @@ class CreateHealthCarePlanUseCase {
     constructor(
         @inject("HealthCarePlanRepository")
         private healthCarePlanRepository: IHealthCarePlanRepository,
-        @inject("FinalcialPostingRepository")
-        private financialPostingRepository: IFinancialPostingRepository
     ) { }
 
     async execute({
@@ -38,8 +36,6 @@ class CreateHealthCarePlanUseCase {
 
         return healthCarePlan;
     }
-
-
 }
 
 export { CreateHealthCarePlanUseCase };

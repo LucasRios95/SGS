@@ -23,7 +23,9 @@ class FinancialPostingRepository implements IFinancialPostingRepository {
         due_date,
         id_account,
         id_category,
-        payment_status
+        payment_status,
+        id_unionPlan,
+        id_healthPlan
     }): Promise<FinancialPosting> {
         const financialPosting = this.repository.create({
             id,
@@ -36,7 +38,9 @@ class FinancialPostingRepository implements IFinancialPostingRepository {
             due_date,
             id_account,
             id_category,
-            payment_status
+            payment_status,
+            id_unionPlan,
+            id_healthPlan
         });
 
         await this.repository.save(financialPosting);
@@ -68,7 +72,9 @@ class FinancialPostingRepository implements IFinancialPostingRepository {
         due_date,
         id_account,
         id_category,
-        payment_status
+        payment_status,
+        id_unionPlan,
+        id_healthPlan
     }): Promise<FinancialPosting> {
         const financialPosting = await this.repository.save({
             id,
@@ -81,7 +87,9 @@ class FinancialPostingRepository implements IFinancialPostingRepository {
             due_date,
             id_account,
             id_category,
-            payment_status
+            payment_status,
+            id_unionPlan,
+            id_healthPlan
         });
 
         return financialPosting;

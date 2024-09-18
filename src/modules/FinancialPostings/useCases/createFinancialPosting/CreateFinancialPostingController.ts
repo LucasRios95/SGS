@@ -14,7 +14,9 @@ class CreateFinancialPostingController {
             due_date,
             id_account,
             id_category,
-            payment_status
+            payment_status,
+            id_unionPlan,
+            id_healthPlan
         } = request.body;
 
         const createFinancialPostingUseCase = container.resolve(CreateFinancialPostingUseCase);
@@ -29,7 +31,9 @@ class CreateFinancialPostingController {
             due_date,
             id_account,
             id_category,
-            payment_status
+            payment_status,
+            id_unionPlan,
+            id_healthPlan
         });
 
         return response.status(201).json(financialPosting);

@@ -10,7 +10,9 @@ interface IEditFinancialPostingDto {
     due_date?: Date;
     id_account?: string;
     id_category?: string;
-    payment_status?: string
+    payment_status?: string;
+    id_unionPlan?: string;
+    id_healthPlan?: string;
 }
 
 export { IEditFinancialPostingDto };

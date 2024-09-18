@@ -4,6 +4,8 @@ import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn 
 import { v4 as uuidV4 } from "uuid";
 import { Category } from "./Category";
 import { ColumnNumericTransformer } from "config/ColumnNumericTransformer";
+import { HealthCarePlan } from "modules/HealthCarePlan/infra/typeorm/entities/HealthCarePlan";
+import { UnionPlan } from "modules/UnionPlans/infra/typeorm/entities/UnionPlan";
 
 export enum PaymentStatus {
     PENDING = 'pending',
@@ -78,6 +80,21 @@ export class FinancialPosting {
 
     @Column({ type: 'enum', enum: PaymentStatus })
     payment_status: PaymentStatus;
+
+
+    @ManyToOne(() => UnionPlan)
+    @JoinColumn({ name: "id_unionPlan" })
+    unionPlan: UnionPlan;
+
+    @Column()
+    id_unionPlan: string;
+
+    @ManyToOne(() => HealthCarePlan)
+    @JoinColumn({ name: "id_healthPlan" })
+    healthCarePlan: HealthCarePlan;
+
+    @Column()
+    id_healthPlan: string;
 
     constructor() {
         if (!this.id) {
