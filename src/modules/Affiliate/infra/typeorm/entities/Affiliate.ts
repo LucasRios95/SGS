@@ -1,4 +1,3 @@
-import { Company } from "modules/Companies/infra/typeorm/entities/Company";
 import { HealthCarePlan } from "modules/HealthCarePlan/infra/typeorm/entities/HealthCarePlan";
 import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid"
